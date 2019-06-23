@@ -1,30 +1,30 @@
 /*SON/2018-11-06 00:29 - DEVELOPMENT
-This class is the term table's route class.
+This class is the week_iterations table's route class.
 It is initialized at the "Index.js" and is able to recieve
 calls from the client and passes the calls down to the 
-"TermController" class
+"WeekIterationsController" class
 */
 
 const express = require("express");
 const router = express.Router();
 const bodyParser = require("body-parser");
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
-const TermController = require("../../controllers/term_management/TermController.js");
+const WeekIterationsController = require("../../controllers/term_management/WeekIterationsController.js");
 
 //Middle ware that is specific to this router
 router.use(function timeLog(req, res, next) {
   next();
 });
 
-router.post("/add_term", urlencodedParser, function(request, response) {
+router.post("/add_week_iterations", urlencodedParser, function(
+  request,
+  response
+) {
   var jsonObject_ = {
-    TermIterationId: request.body.TermIterationId,
-    TermStartDate: request.body.TermStartDate,
-    TermEndDate: request.body.TermEndDate,
-    Year: request.body.Year
+    WeekIterationDescription: request.body.WeekIterationDescription
   };
 
-  var myPromise = TermController.insert(jsonObject_);
+  var myPromise = WeekIterationsController.insert(jsonObject_);
 
   myPromise.then(
     function(result) {
@@ -38,8 +38,11 @@ router.post("/add_term", urlencodedParser, function(request, response) {
   );
 });
 
-router.post("/get_all_term", urlencodedParser, function(request, response) {
-  var myPromise = TermController.get_all_records();
+router.post("/get_all_week_iterations", urlencodedParser, function(
+  request,
+  response
+) {
+  var myPromise = WeekIterationsController.get_all_records();
 
   myPromise.then(
     function(result) {
@@ -53,7 +56,7 @@ router.post("/get_all_term", urlencodedParser, function(request, response) {
   );
 });
 
-router.post("/get_specific_term", urlencodedParser, function(
+router.post("/get_specific_week_iterations", urlencodedParser, function(
   request,
   response
 ) {
@@ -61,7 +64,7 @@ router.post("/get_specific_term", urlencodedParser, function(
   //var mValue=parseInt(request.query.search_value, 10);
   var mValue = request.body.search_value;
 
-  var myPromise = TermController.get_specific_records(mKey, mValue);
+  var myPromise = WeekIterationsController.get_specific_records(mKey, mValue);
 
   myPromise.then(
     function(result) {
@@ -75,15 +78,15 @@ router.post("/get_specific_term", urlencodedParser, function(
   );
 });
 
-router.post("/update_term", urlencodedParser, function(request, response) {
+router.post("/update_week_iterations", urlencodedParser, function(
+  request,
+  response
+) {
   var jsonObject_ = {
-    TermIterationId: request.body.TermIterationId,
-    TermStartDate: request.body.TermStartDate,
-    TermEndDate: request.body.TermEndDate,
-    Year: request.body.Year
+    WeekIterationDescription: request.body.WeekIterationDescription
   };
 
-  var myPromise = TermController.batch_update(jsonObject_);
+  var myPromise = WeekIterationsController.batch_update(jsonObject_);
 
   myPromise.then(
     function(result) {
@@ -97,7 +100,7 @@ router.post("/update_term", urlencodedParser, function(request, response) {
   );
 });
 
-router.post("/update_individual_term", urlencodedParser, function(
+router.post("/update_individual_week_iterations", urlencodedParser, function(
   request,
   response
 ) {
@@ -105,13 +108,10 @@ router.post("/update_individual_term", urlencodedParser, function(
   var value_ = request.body.ColumnValue;
 
   var jsonObject_ = {
-    TermIterationId: request.body.TermIterationId,
-    TermStartDate: request.body.TermStartDate,
-    TermEndDate: request.body.TermEndDate,
-    Year: request.body.Year
+    WeekIterationDescription: request.body.WeekIterationDescription
   };
 
-  var myPromise = TermController.individual_record_update(
+  var myPromise = WeekIterationsController.individual_record_update(
     column_name,
     value_,
     jsonObject_
@@ -129,7 +129,7 @@ router.post("/update_individual_term", urlencodedParser, function(
   );
 });
 
-router.post("/delete_individual_term", urlencodedParser, function(
+router.post("/delete_individual_week_iterations", urlencodedParser, function(
   request,
   response
 ) {
@@ -141,7 +141,7 @@ router.post("/delete_individual_term", urlencodedParser, function(
 
   var UserId = request.body.UserId;
 
-  var myPromise = TermController.delete_user_specic_record(
+  var myPromise = WeekIterationsController.delete_user_specic_record(
     column_name,
     value_,
     UserIdColumnName,
@@ -160,29 +160,33 @@ router.post("/delete_individual_term", urlencodedParser, function(
   );
 });
 
-router.post("/get_number_of_term_records", urlencodedParser, function(
-  request,
-  response
-) {
-  var column_name = request.body.column_name;
-  //var mValue=parseInt(request.body.search_value, 10);
-  var value_ = request.body.search_value;
+router.post(
+  "/get_number_of_week_iterations_records",
+  urlencodedParser,
+  function(request, response) {
+    var column_name = request.body.column_name;
+    //var mValue=parseInt(request.body.search_value, 10);
+    var value_ = request.body.search_value;
 
-  var myPromise = TermController.get_number_of_records(column_name, value_);
+    var myPromise = WeekIterationsController.get_number_of_records(
+      column_name,
+      value_
+    );
 
-  myPromise.then(
-    function(result) {
-      var response_object = { results: result };
-      response.send(response_object);
-    },
-    function(err) {
-      response.send("An error occurred");
-      console.log(err);
-    }
-  );
-});
+    myPromise.then(
+      function(result) {
+        var response_object = { results: result };
+        response.send(response_object);
+      },
+      function(err) {
+        response.send("An error occurred");
+        console.log(err);
+      }
+    );
+  }
+);
 
-router.post("/term_user_specific_query", urlencodedParser, function(
+router.post("/week_iterations_user_specific_query", urlencodedParser, function(
   request,
   response
 ) {
@@ -194,42 +198,11 @@ router.post("/term_user_specific_query", urlencodedParser, function(
 
   var UserId = request.body.UserId;
 
-  var myPromise = TermController.user_specific_select_query(
+  var myPromise = WeekIterationsController.user_specific_select_query(
     ColumnName,
     value_,
     UserIdColumnName,
     UserId
-  );
-
-  myPromise.then(
-    function(result) {
-      var response_object = { results: result };
-      response.send(response_object);
-    },
-    function(err) {
-      response.send("An error occurred");
-      console.log(err);
-    }
-  );
-});
-
-router.post("/get_all_current_year_terms", urlencodedParser, function(
-  request,
-  response
-) {
-  var TableOne = request.body.TableOne;
-
-  var JoiningKey = request.body.JoiningKey;
-
-  var SearchColumn = request.body.SearchColumn;
-
-  var SearchValue = request.body.SearchValue;
-
-  var myPromise = TermController.get_all_current_year_terms(
-    TableOne,
-    JoiningKey,
-    SearchColumn,
-    SearchValue
   );
 
   myPromise.then(

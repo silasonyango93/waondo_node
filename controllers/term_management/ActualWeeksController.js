@@ -1,21 +1,17 @@
 /*SON/2018-11-06 00:29 - DEVELOPMENT
-This class is the "class_streams" table's model
-class.It receives any CRUD operation 
-requests and hands the over to class 
-ModelMaster.It creates an instance of class
-ModelMaster then passes parameters to its
-functions.
+This class is the actual_weeks's controller class.
+It receives calls from the "ActualWeeksRoutes" class and
+passes the calls down to the "ActualWeeksModel" class
 */
 
-const ModelMaster = require("../ModelMaster.js");
-const TableName = "class_streams";
+const ActualWeeksModel = require("../../models/term_management/ActualWeeksModel.js");
 
-module.exports = class ClassStreamsModel {
+module.exports = class ActualWeeksController {
   constructor() {}
 
   static insert(jsonObject_) {
     return new Promise(function(resolve, reject) {
-      var myPromise = ModelMaster.insert(TableName, jsonObject_);
+      var myPromise = ActualWeeksModel.insert(jsonObject_);
 
       myPromise.then(
         function(result) {
@@ -30,7 +26,8 @@ module.exports = class ClassStreamsModel {
 
   static get_all_records() {
     return new Promise(function(resolve, reject) {
-      var myPromise = ModelMaster.selectAll(TableName);
+      var myPromise = ActualWeeksModel.get_all_records();
+
       myPromise.then(
         function(result) {
           resolve(result);
@@ -44,7 +41,8 @@ module.exports = class ClassStreamsModel {
 
   static get_specific_records(ColumnName, value_) {
     return new Promise(function(resolve, reject) {
-      var myPromise = ModelMaster.selectSpecific(TableName, ColumnName, value_);
+      var myPromise = ActualWeeksModel.get_specific_records(ColumnName, value_);
+
       myPromise.then(
         function(result) {
           resolve(result);
@@ -58,7 +56,8 @@ module.exports = class ClassStreamsModel {
 
   static batch_update(jsonObject_) {
     return new Promise(function(resolve, reject) {
-      var myPromise = ModelMaster.batch_update(TableName, jsonObject_);
+      var myPromise = ActualWeeksModel.batch_update(jsonObject_);
+
       myPromise.then(
         function(result) {
           resolve(result);
@@ -72,12 +71,12 @@ module.exports = class ClassStreamsModel {
 
   static individual_record_update(ColumnName, value_, jsonObject_) {
     return new Promise(function(resolve, reject) {
-      var myPromise = ModelMaster.individual_update(
-        TableName,
-        jsonObject_,
+      var myPromise = ActualWeeksModel.individual_record_update(
         ColumnName,
-        value_
+        value_,
+        jsonObject_
       );
+
       myPromise.then(
         function(result) {
           resolve(result);
@@ -96,13 +95,13 @@ module.exports = class ClassStreamsModel {
     UserId
   ) {
     return new Promise(function(resolve, reject) {
-      var myPromise = ModelMaster.delete(
-        TableName,
+      var myPromise = ActualWeeksModel.delete_user_specic_record(
         ColumnName,
         value_,
         UserIdColumnName,
         UserId
       );
+
       myPromise.then(
         function(result) {
           resolve(result);
@@ -116,11 +115,11 @@ module.exports = class ClassStreamsModel {
 
   static get_number_of_records(ColumnName, value_) {
     return new Promise(function(resolve, reject) {
-      var myPromise = ModelMaster.get_number_of_records(
-        TableName,
+      var myPromise = ActualWeeksModel.get_number_of_records(
         ColumnName,
         value_
       );
+
       myPromise.then(
         function(result) {
           resolve(result);
@@ -139,13 +138,13 @@ module.exports = class ClassStreamsModel {
     UserId
   ) {
     return new Promise(function(resolve, reject) {
-      var myPromise = ModelMaster.user_specific_select_query(
-        TableName,
+      var myPromise = ActualWeeksModel.user_specific_select_query(
         ColumnName,
         value_,
         UserIdColumnName,
         UserId
       );
+
       myPromise.then(
         function(result) {
           resolve(result);
