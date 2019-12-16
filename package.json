@@ -10,11 +10,11 @@
     "start": "node index.js",
     "test": "node test.js",
     "pretty-quick": "pretty-quick",
-	"husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
+    "husky": {
+      "hooks": {
+        "pre-commit": "pretty-quick --staged"
+      }
     }
-  }
   },
   "dependencies": {
     "cool-ascii-faces": "^1.3.4",

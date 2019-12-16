@@ -88,8 +88,10 @@ app.use(function(err, req, res, next) {
   res.status(500).send("Something broke!");
 });
 
-var port = process.env.PORT || 5000;
 
-app.listen(port, function() {
-  console.log("Listening on " + port);
+const server = app.listen(8080, () => {
+  const host = server.address().address;
+  const port = server.address().port;
+
+  console.log(`Backend system listening at http://${host}:${port}`);
 });

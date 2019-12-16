@@ -1,13 +1,13 @@
 var mysql = require('mysql');
 var dbcredentials;
 
-        dbcredentials={
-		  host: process.env.DB_HOST,
-        user: process.env.DB_USER,
-        password: process.env.DB_PASS,
-        database: process.env.WAONDO_DATABASE,
-	      insecureAuth : true
-		}
+dbcredentials = {
+    host: 'mysql-db',
+    user: "silas",
+    password: "8032",
+    database: "kopa",
+    insecureAuth: true
+};
 
 
 var con = mysql.createConnection(dbcredentials);
