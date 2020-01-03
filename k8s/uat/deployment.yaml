@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: uat
+  name: waondo-node-backend
+  labels:
+    name: waondo-node-backend
+    app: waondo-node-backend
+spec:
+  selector:
+    matchLabels:
+      app: waondo-node-backend
+  template:
+    metadata:
+      name: waondo-node-backend
+      labels:
+        name: waondo-node-backend
+        app: waondo-node-backend
+    spec:
+      containers:
+        - name: waondo-node-backend
+          imagePullPolicy: Always
+          image: silasonyango93/waondo-node-backend:latest
+          ports:
+            - containerPort: 8080

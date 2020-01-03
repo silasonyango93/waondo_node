@@ -1,0 +1,36 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  namespace: uat
+  name: waondo-backend
+  annotations:
+    kubernetes.io/ingress.class: nginx
+#    certmanager.k8s.io/cluster-issuer: "letsencrypt-staging"
+spec:
+  rules:
+    - host: backend.waondo.agweria.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: waondo-backend
+              servicePort: 8080
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  namespace: uat
+  name: pma
+  annotations:
+    kubernetes.io/ingress.class: nginx
+#    certmanager.k8s.io/cluster-issuer: "letsencrypt-staging"
+spec:
+  rules:
+    - host: pma.waondo.agweria.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: pma
+              servicePort: 80
+
