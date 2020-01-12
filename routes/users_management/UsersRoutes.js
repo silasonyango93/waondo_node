@@ -78,9 +78,9 @@ router.use(function timeLog(req, res, next) {
 	   
 	   
         var	jsonObject_ = {
-         
-		    
-			AteemtedEmail:request.body.AteemtedEmail,
+
+
+            AttemptedEmail:request.body.AttemptedEmail,
 			AttemptedPassword:request.body.AttemptedPassword
 		 
 		

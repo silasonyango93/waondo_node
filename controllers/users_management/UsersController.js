@@ -95,7 +95,7 @@ module.exports = class UsersController{
 	     
 		 var TableName="users";
 		 var SearchColumn="Email";
-		 var SearchValue=jsonObject_.AteemtedEmail;
+		 var SearchValue=jsonObject_.AttemptedEmail;
 		   
 		   
 	    

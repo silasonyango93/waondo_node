@@ -19,7 +19,7 @@ dbcredentials = {
   host: 'mysql-db',
   user: "silas",
   password: "8032",
-  database: "kopa",
+  database: "waondo",
   insecureAuth: true
 };
 

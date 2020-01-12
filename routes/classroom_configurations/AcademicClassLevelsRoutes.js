@@ -1,5 +1,5 @@
 /*SON/2018-11-06 00:29 - DEVELOPMENT
-This class is the lot_descriptions table's route class.
+This class is the academic_class_levels table's route class.
 It is initialized at the "Index.js" and is able to recieve
 calls from the client and passes the calls down to the 
 "AcademicClassLevelsController" class
@@ -23,7 +23,7 @@ router.use(function timeLog(req, res, next) {
 
 
 
-   router.post('/add_lot_descriptions', urlencodedParser,function(request,response){
+   router.post('/add_academic_class_levels', urlencodedParser,function(request,response){
 	   
 	    
 	   
@@ -56,7 +56,7 @@ router.use(function timeLog(req, res, next) {
 
 
 
-   router.post('/get_all_lot_descriptions',urlencodedParser,function(request,response){
+   router.post('/get_all_academic_class_levels',urlencodedParser,function(request,response){
     
     var myPromise = AcademicClassLevelsController.get_all_records();
 	      
@@ -80,7 +80,7 @@ router.use(function timeLog(req, res, next) {
 
 
 
-   router.post('/get_specific_lot_descriptions',urlencodedParser,function(request,response){
+   router.post('/get_specific_academic_class_levels',urlencodedParser,function(request,response){
         var mKey=request.body.column_name;
         //var mValue=parseInt(request.query.search_value, 10);
         var mValue=request.body.search_value;
@@ -114,7 +114,7 @@ router.use(function timeLog(req, res, next) {
 
 
 
-   router.post('/update_lot_descriptions',urlencodedParser,function(request,response){
+   router.post('/update_academic_class_levels',urlencodedParser,function(request,response){
 	   
 	  
 	   var	jsonObject_ = {
@@ -148,7 +148,7 @@ router.use(function timeLog(req, res, next) {
 
 
 
-   router.post('/update_individual_lot_descriptions',urlencodedParser,function(request,response){
+   router.post('/update_individual_academic_class_levels',urlencodedParser,function(request,response){
 	
           var column_name=request.body.ColumnName;
           var value_=request.body.ColumnValue;
@@ -184,7 +184,7 @@ router.use(function timeLog(req, res, next) {
 
 
 
-   router.post('/delete_individual_lot_descriptions',urlencodedParser,function(request,response){
+   router.post('/delete_individual_academic_class_levels',urlencodedParser,function(request,response){
 	
     var column_name=request.body.column_name;
     //var mValue=parseInt(request.body.search_value, 10);
@@ -214,7 +214,7 @@ router.use(function timeLog(req, res, next) {
 
 
 
-   router.post('/get_number_of_lot_descriptions_records',urlencodedParser,function(request,response){
+   router.post('/get_number_of_academic_class_levels_records',urlencodedParser,function(request,response){
 	
     var column_name=request.body.column_name;
     //var mValue=parseInt(request.body.search_value, 10);
@@ -242,7 +242,7 @@ router.use(function timeLog(req, res, next) {
 
 
 
-router.post('/lot_descriptions_user_specific_query',urlencodedParser,function(request,response){
+router.post('/academic_class_levels_user_specific_query',urlencodedParser,function(request,response){
 	
     var ColumnName=request.body.ColumnName;
     //var mValue=parseInt(request.body.search_value, 10);
