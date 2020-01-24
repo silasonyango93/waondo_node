@@ -156,4 +156,19 @@ module.exports = class ActualWeeksModel {
       );
     });
   }
+
+  static getAyearsWeeks(year) {
+    return new Promise(function(resolve, reject) {
+      var myPromise = ModelMaster.getAyearsWeeks(year);
+      myPromise.then(
+          function(result) {
+            resolve(result);
+          },
+          function(err) {
+            reject(err);
+          }
+      );
+    });
+  }
+  
 };

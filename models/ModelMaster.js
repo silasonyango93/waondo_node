@@ -1402,4 +1402,22 @@ and two grandchildren(Tables five and six) from one child(TableFour)
       );
     });
   }
+
+
+  static getAyearsWeeks(year) {
+    return new Promise(function(resolve, reject) {
+      con.query(
+          "SELECT * FROM actual_terms INNER JOIN actual_weeks ON actual_terms.TermId = actual_weeks.TermId WHERE actual_terms.Year = "+year,
+          function(err, result) {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(result);
+            }
+          }
+      );
+    });
+  }
+
+
 };

@@ -155,4 +155,22 @@ module.exports = class ActualWeeksController {
       );
     });
   }
+
+
+  static getAyearsWeeks(year) {
+    return new Promise(function(resolve, reject) {
+      var myPromise = ActualWeeksModel.getAyearsWeeks(year);
+
+      myPromise.then(
+          function(result) {
+            resolve(result);
+          },
+          function(err) {
+            reject(err);
+          }
+      );
+    });
+  }
+  
+  
 };

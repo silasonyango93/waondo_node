@@ -222,4 +222,25 @@ router.post("/actual_weeks_user_specific_query", urlencodedParser, function(
   );
 });
 
+
+router.post("/get_a_years_weeks", urlencodedParser, function(
+    request,
+    response
+) {
+  var year = request.body.year;
+  
+  var myPromise = ActualWeeksController.getAyearsWeeks(year);
+
+  myPromise.then(
+      function(result) {
+        var response_object = { results: result };
+        response.send(response_object);
+      },
+      function(err) {
+        response.send("An error occurred");
+        console.log(err);
+      }
+  );
+});
+
 module.exports = router;

@@ -26,6 +26,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="editorconfig.notification" value="null" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
@@ -85,7 +86,14 @@
       <workItem from="1578052351161" duration="171000" />
       <workItem from="1578404099325" duration="3973000" />
       <workItem from="1578658773172" duration="1913000" />
-      <workItem from="1578726017977" duration="5624000" />
+      <workItem from="1578726017977" duration="7233000" />
+      <workItem from="1578992510153" duration="2488000" />
+      <workItem from="1579510237186" duration="4954000" />
+      <workItem from="1579540060588" duration="599000" />
+      <workItem from="1579580483420" duration="2853000" />
+      <workItem from="1579607779808" duration="1846000" />
+      <workItem from="1579784885275" duration="485000" />
+      <workItem from="1579866608395" duration="1616000" />
     </task>
     <servers />
   </component>
