@@ -1,32 +1,32 @@
 /*SON/2018-11-06 00:29 - DEVELOPMENT
-This class is the installments table's route class.
+This class is the session_logs table's route class.
 It is initialized at the "Index.js" and is able to recieve
 calls from the client and passes the calls down to the 
-"InstallmentsController" class
+"SessionLogsController" class
 */
 
 const express = require("express");
 const router = express.Router();
 const bodyParser = require("body-parser");
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
-const InstallmentsController = require("../../controllers/fee_management/InstallmentsController.js");
+const SessionLogsController = require("../../controllers/session_management/SessionLogsController.js");
 
 //Middle ware that is specific to this router
 router.use(function timeLog(req, res, next) {
   next();
 });
 
-router.post("/add_installments", urlencodedParser, function(request, response) {
+router.post("/add_session_logs", urlencodedParser, function(request, response) {
   var jsonObject_ = {
-    SessionLogId: request.body.SessionLogId,
-    ActualSessionActivityId: request.body.ActualSessionActivityId,
-    AdmissionNo: request.body.AdmissionNo,
-    InstallmentAmount: request.body.InstallmentAmount,
-    InstallmentDate: request.body.InstallmentDate,
-    IsCarryForward: request.body.IsCarryForward
+    UserId: request.body.UserId,
+    SessionStartDate: request.body.SessionStartDate,
+    SessionEndDate: request.body.SessionEndDate,
+    TermId: request.body.TermId,
+    ActualWeekId: request.body.ActualWeekId,
+    SessionYear: request.body.SessionYear
   };
 
-  var myPromise = InstallmentsController.insert(jsonObject_);
+  var myPromise = SessionLogsController.insert(jsonObject_);
 
   myPromise.then(
     function(result) {
@@ -40,11 +40,11 @@ router.post("/add_installments", urlencodedParser, function(request, response) {
   );
 });
 
-router.post("/get_all_installments", urlencodedParser, function(
+router.post("/get_all_session_logs", urlencodedParser, function(
   request,
   response
 ) {
-  var myPromise = InstallmentsController.get_all_records();
+  var myPromise = SessionLogsController.get_all_records();
 
   myPromise.then(
     function(result) {
@@ -58,7 +58,7 @@ router.post("/get_all_installments", urlencodedParser, function(
   );
 });
 
-router.post("/get_specific_installments", urlencodedParser, function(
+router.post("/get_specific_session_logs", urlencodedParser, function(
   request,
   response
 ) {
@@ -66,7 +66,7 @@ router.post("/get_specific_installments", urlencodedParser, function(
   //var mValue=parseInt(request.query.search_value, 10);
   var mValue = request.body.search_value;
 
-  var myPromise = InstallmentsController.get_specific_records(mKey, mValue);
+  var myPromise = SessionLogsController.get_specific_records(mKey, mValue);
 
   myPromise.then(
     function(result) {
@@ -80,17 +80,20 @@ router.post("/get_specific_installments", urlencodedParser, function(
   );
 });
 
-router.post("/update_installments", urlencodedParser, function(
+router.post("/update_session_logs", urlencodedParser, function(
   request,
   response
 ) {
   var jsonObject_ = {
-    AdmissionNo: request.body.AdmissionNo,
-    InstallmentAmount: request.body.InstallmentAmount,
-    InstallmentDate: request.body.InstallmentDate
+    UserId: request.body.UserId,
+    SessionStartDate: request.body.SessionStartDate,
+    SessionEndDate: request.body.SessionEndDate,
+    TermId: request.body.TermId,
+    ActualWeekId: request.body.ActualWeekId,
+    SessionYear: request.body.SessionYear
   };
 
-  var myPromise = InstallmentsController.batch_update(jsonObject_);
+  var myPromise = SessionLogsController.batch_update(jsonObject_);
 
   myPromise.then(
     function(result) {
@@ -104,7 +107,7 @@ router.post("/update_installments", urlencodedParser, function(
   );
 });
 
-router.post("/update_individual_installments", urlencodedParser, function(
+router.post("/update_individual_session_logs", urlencodedParser, function(
   request,
   response
 ) {
@@ -112,12 +115,15 @@ router.post("/update_individual_installments", urlencodedParser, function(
   var value_ = request.body.ColumnValue;
 
   var jsonObject_ = {
-    AdmissionNo: request.body.AdmissionNo,
-    InstallmentAmount: request.body.InstallmentAmount,
-    InstallmentDate: request.body.InstallmentDate
+    UserId: request.body.UserId,
+    SessionStartDate: request.body.SessionStartDate,
+    SessionEndDate: request.body.SessionEndDate,
+    TermId: request.body.TermId,
+    ActualWeekId: request.body.ActualWeekId,
+    SessionYear: request.body.SessionYear
   };
 
-  var myPromise = InstallmentsController.individual_record_update(
+  var myPromise = SessionLogsController.individual_record_update(
     column_name,
     value_,
     jsonObject_
@@ -135,7 +141,7 @@ router.post("/update_individual_installments", urlencodedParser, function(
   );
 });
 
-router.post("/delete_individual_installments", urlencodedParser, function(
+router.post("/delete_individual_session_logs", urlencodedParser, function(
   request,
   response
 ) {
@@ -147,7 +153,7 @@ router.post("/delete_individual_installments", urlencodedParser, function(
 
   var UserId = request.body.UserId;
 
-  var myPromise = InstallmentsController.delete_user_specic_record(
+  var myPromise = SessionLogsController.delete_user_specic_record(
     column_name,
     value_,
     UserIdColumnName,
@@ -166,7 +172,7 @@ router.post("/delete_individual_installments", urlencodedParser, function(
   );
 });
 
-router.post("/get_number_of_installments_records", urlencodedParser, function(
+router.post("/get_number_of_session_logs_records", urlencodedParser, function(
   request,
   response
 ) {
@@ -174,7 +180,7 @@ router.post("/get_number_of_installments_records", urlencodedParser, function(
   //var mValue=parseInt(request.body.search_value, 10);
   var value_ = request.body.search_value;
 
-  var myPromise = InstallmentsController.get_number_of_records(
+  var myPromise = SessionLogsController.get_number_of_records(
     column_name,
     value_
   );
@@ -191,7 +197,7 @@ router.post("/get_number_of_installments_records", urlencodedParser, function(
   );
 });
 
-router.post("/installments_user_specific_query", urlencodedParser, function(
+router.post("/session_logs_user_specific_query", urlencodedParser, function(
   request,
   response
 ) {
@@ -203,7 +209,7 @@ router.post("/installments_user_specific_query", urlencodedParser, function(
 
   var UserId = request.body.UserId;
 
-  var myPromise = InstallmentsController.user_specific_select_query(
+  var myPromise = SessionLogsController.user_specific_select_query(
     ColumnName,
     value_,
     UserIdColumnName,

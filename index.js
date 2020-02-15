@@ -16,7 +16,7 @@ var port = process.env.PORT || 5000;
 
 app.use(cors());
 dbcredentials = {
-  host: 'mysql-db',
+  host: "mysql-db",
   user: "silas",
   password: "8032",
   database: "waondo",
@@ -65,6 +65,7 @@ app.use(require("./routes/classroom_configurations/ClassRoutes.js"));
 
 app.use(require("./routes/students_management/StudentsRoutes.js"));
 app.use(require("./routes/students_management/StudentTypesRoutes.js"));
+app.use(require("./routes/students_management/StudentRegistrationRoutes.js"));
 
 /*SON/2019-1-04 11:50 - DEVELOPMENT : End Student Management*/
 
@@ -83,11 +84,20 @@ app.use(require("./routes/fee_management/FeeRoutes.js"));
 app.use(require("./routes/fee_management/InstallmentsRoutes.js"));
 app.use(require("./routes/fee_management/CarryForwardRoutes.js"));
 
+/*SON/2019-1-04 11:50 - DEVELOPMENT : End Term Configurations*/
+
+/*SON/2019-1-04 11:50 - DEVELOPMENT : Start Session Managements*/
+
+app.use(require("./routes/session_management/SessionLogsRoutes.js"));
+app.use(require("./routes/session_management/SessionActivitiesRoutes.js"));
+app.use(
+  require("./routes/session_management/ActualSessionActivitiesRoutes.js")
+);
+
 app.use(function(err, req, res, next) {
   console.error(err.stack);
   res.status(500).send("Something broke!");
 });
-
 
 const server = app.listen(8080, () => {
   const host = server.address().address;
