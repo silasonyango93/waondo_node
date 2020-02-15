@@ -2,14 +2,14 @@
 This students is the students table's route students.
 It is initialized at the "Index.js" and is able to recieve
 calls from the client and passes the calls down to the 
-"studentsController" students
+"StudentsController" students
 */
 
 const express = require("express");
 const router = express.Router();
 const bodyParser = require("body-parser");
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
-const studentsController = require("../../controllers/students_management/studentsController.js");
+const StudentsController = require("../../controllers/students_management/StudentsController.js");
 
 //Middle ware that is specific to this router
 router.use(function timeLog(req, res, next) {
@@ -29,7 +29,7 @@ router.post("/add_students", urlencodedParser, function(request, response) {
     AdmissionDate: date
   };
 
-  var myPromise = studentsController.insert(jsonObject_);
+  var myPromise = StudentsController.insert(jsonObject_);
 
   myPromise.then(
     function(result) {
@@ -44,7 +44,7 @@ router.post("/add_students", urlencodedParser, function(request, response) {
 });
 
 router.post("/get_all_students", urlencodedParser, function(request, response) {
-  var myPromise = studentsController.get_all_records();
+  var myPromise = StudentsController.get_all_records();
 
   myPromise.then(
     function(result) {
@@ -66,7 +66,7 @@ router.post("/get_specific_students", urlencodedParser, function(
   //var mValue=parseInt(request.query.search_value, 10);
   var mValue = request.body.search_value;
 
-  var myPromise = studentsController.get_specific_records(mKey, mValue);
+  var myPromise = StudentsController.get_specific_records(mKey, mValue);
 
   myPromise.then(
     function(result) {
@@ -93,7 +93,7 @@ router.post("/update_students", urlencodedParser, function(request, response) {
     AdmissionDate: date
   };
 
-  var myPromise = studentsController.batch_update(jsonObject_);
+  var myPromise = StudentsController.batch_update(jsonObject_);
 
   myPromise.then(
     function(result) {
@@ -126,7 +126,7 @@ router.post("/update_individual_students", urlencodedParser, function(
     AdmissionDate: date
   };
 
-  var myPromise = studentsController.individual_record_update(
+  var myPromise = StudentsController.individual_record_update(
     column_name,
     value_,
     jsonObject_
@@ -156,7 +156,7 @@ router.post("/delete_individual_students", urlencodedParser, function(
 
   var UserId = request.body.UserId;
 
-  var myPromise = studentsController.delete_user_specic_record(
+  var myPromise = StudentsController.delete_user_specic_record(
     column_name,
     value_,
     UserIdColumnName,
@@ -183,7 +183,7 @@ router.post("/get_number_of_students_records", urlencodedParser, function(
   //var mValue=parseInt(request.body.search_value, 10);
   var value_ = request.body.search_value;
 
-  var myPromise = studentsController.get_number_of_records(column_name, value_);
+  var myPromise = StudentsController.get_number_of_records(column_name, value_);
 
   myPromise.then(
     function(result) {
@@ -209,7 +209,7 @@ router.post("/students_user_specific_query", urlencodedParser, function(
 
   var UserId = request.body.UserId;
 
-  var myPromise = studentsController.user_specific_select_query(
+  var myPromise = StudentsController.user_specific_select_query(
     ColumnName,
     value_,
     UserIdColumnName,
