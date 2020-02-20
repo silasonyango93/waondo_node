@@ -156,4 +156,18 @@ module.exports = class LotsModel {
       );
     });
   }
+
+  static getAllLotsByFullDescription() {
+    return new Promise(function(resolve, reject) {
+      var myPromise = ModelMaster.getAllLotsByFullDescription();
+      myPromise.then(
+        function(result) {
+          resolve(result);
+        },
+        function(err) {
+          reject(err);
+        }
+      );
+    });
+  }
 };
