@@ -23,7 +23,6 @@ router.post("/add_class", urlencodedParser, function(request, response) {
   var jsonObject_ = {
     LotId: request.body.LotId,
     ClassStreamId: request.body.ClassStreamId,
-    ClassName: request.body.ClassName,
     RegisteredDate: date
   };
 
