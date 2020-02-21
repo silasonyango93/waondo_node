@@ -156,4 +156,18 @@ module.exports = class ClassModel {
       );
     });
   }
+
+  static getAllActualClassesByFullDescription() {
+    return new Promise(function(resolve, reject) {
+      var myPromise = ModelMaster.getAllActualClassesByFullDescription();
+      myPromise.then(
+        function(result) {
+          resolve(result);
+        },
+        function(err) {
+          reject(err);
+        }
+      );
+    });
+  }
 };
