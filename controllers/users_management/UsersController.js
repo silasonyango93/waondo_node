@@ -124,7 +124,7 @@ module.exports = class UsersController{
 				  {
 
 
-					  var myUsersObjectPromise = UsersModel.getAUserFullSessionDetails(userExistsResult[0].UserId);
+					  var myUsersObjectPromise = ModelMaster.getAUserFullSessionDetails(userExistsResult[0].UserId);
 					  myUsersObjectPromise.then(function(result) {
 
 						  var response_object = {
