@@ -1450,18 +1450,37 @@ and two grandchildren(Tables five and six) from one child(TableFour)
   }
 
 
-  static getAUserFullSessionDetails(userId) {
+  static getAUserFullSessionDetails(userId,attemptedRoleCode) {
     return new Promise(function(resolve, reject) {
+      
       con.query(
-          "SELECT * FROM users INNER JOIN user_roles ON users.UserId = user_roles.UserId INNER JOIN roles ON user_roles.RoleId = roles.RoleId INNER JOIN user_access_privileges ON user_roles.UserRoleId = user_access_privileges.UserRoleId INNER JOIN access_privileges ON access_privileges.AccessPrivilegeId = user_access_privileges.AccessPrivilegeId WHERE users.UserId = "+userId+";",
-          function(err, result) {
+          "SELECT * FROM users INNER JOIN user_roles ON users.UserId = user_roles.UserId INNER JOIN roles ON user_roles.RoleId = roles.RoleId WHERE users.UserId = "+userId+" AND roles.RoleCode = "+attemptedRoleCode+";",
+          function(err, userRolesResult) {
             if (err) {
               reject(err);
             } else {
-              resolve(result);
+              //************************************
+              console.log(userRolesResult[0].UserRoleId);
+                con.query(
+                    "SELECT * FROM user_roles INNER JOIN user_access_privileges ON user_roles.UserRoleId = user_access_privileges.UserRoleId INNER JOIN access_privileges ON access_privileges.AccessPrivilegeId = user_access_privileges.AccessPrivilegeId WHERE user_roles.UserRoleId = "+userRolesResult[0].UserRoleId+";",
+                    function (err, accessPrivilegesResult) {
+                      if (err) {
+                        reject(err);
+                      }
+                      
+                      const payload = {
+                        userRoles: userRolesResult[0], accessPrivileges: accessPrivilegesResult
+                      };
+                      resolve(payload);
+                    }
+                );
+
+              
+              //*************************************
             }
           }
       );
+      
     });
   }
 };

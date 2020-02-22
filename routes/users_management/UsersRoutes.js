@@ -81,7 +81,8 @@ router.use(function timeLog(req, res, next) {
 
 
             AttemptedEmail:request.body.AttemptedEmail,
-			AttemptedPassword:request.body.AttemptedPassword
+			AttemptedPassword:request.body.AttemptedPassword,
+            AttemptedRoleCode:request.body.AttemptedRoleCode
 		 
 		
       
