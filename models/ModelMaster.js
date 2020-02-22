@@ -1448,4 +1448,20 @@ and two grandchildren(Tables five and six) from one child(TableFour)
       );
     });
   }
+
+
+  static getAUserFullSessionDetails(userId) {
+    return new Promise(function(resolve, reject) {
+      con.query(
+          "SELECT * FROM users INNER JOIN user_roles ON users.UserId = user_roles.UserId INNER JOIN roles ON user_roles.RoleId = roles.RoleId INNER JOIN user_access_privileges ON user_roles.UserRoleId = user_access_privileges.UserRoleId INNER JOIN access_privileges ON access_privileges.AccessPrivilegeId = user_access_privileges.AccessPrivilegeId WHERE users.UserId = "+userId+";",
+          function(err, result) {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(result);
+            }
+          }
+      );
+    });
+  }
 };

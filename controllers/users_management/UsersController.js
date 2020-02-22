@@ -122,23 +122,33 @@ module.exports = class UsersController{
 				
 				  if(Attempted_encrypted_Password === userExistsResult[0].EncryptedPassword)
 				  {
+
+
+					  var myUsersObjectPromise = UsersModel.getAUserFullSessionDetails(userExistsResult[0].UserId);
+					  myUsersObjectPromise.then(function(result) {
+
+						  var response_object = {
+						                error: false, ...result
+						                };
+						  resolve(response_object);
+					  }, function(err) {
+						  reject(err);
+					  })
+				  	
 					  
-					  var response_object = {
-                                    error: false, UserId: userExistsResult[0].UserId,Name: userExistsResult[0].Name
-                                    };
 					  
 				   
 				  }else{
 					  
 					   var error_msg="Login failed";
 					   var response_object = {error: true, error_msg:error_msg};
-				       
-					  
+
+					  resolve(response_object);
 				  }
 				
 				
 				  //loginResponse.push(response_object);
-				  resolve(response_object);
+				  
 				  
 				
 			     }
