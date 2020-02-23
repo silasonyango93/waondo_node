@@ -1458,9 +1458,15 @@ and two grandchildren(Tables five and six) from one child(TableFour)
           function(err, userRolesResult) {
             if (err) {
               reject(err);
-            } else {
+            } else if(!userRolesResult.length) {
+              const payload = {
+                userOwnsRole: false
+              };
+              resolve(payload);
+            }
+            else {
               //************************************
-              console.log(userRolesResult[0].UserRoleId);
+              
                 con.query(
                     "SELECT * FROM user_roles INNER JOIN user_access_privileges ON user_roles.UserRoleId = user_access_privileges.UserRoleId INNER JOIN access_privileges ON access_privileges.AccessPrivilegeId = user_access_privileges.AccessPrivilegeId WHERE user_roles.UserRoleId = "+userRolesResult[0].UserRoleId+";",
                     function (err, accessPrivilegesResult) {
@@ -1469,7 +1475,7 @@ and two grandchildren(Tables five and six) from one child(TableFour)
                       }
                       
                       const payload = {
-                        userRoles: userRolesResult[0], accessPrivileges: accessPrivilegesResult
+                        userOwnsRole: true, userRoles: userRolesResult[0], accessPrivileges: accessPrivilegesResult
                       };
                       resolve(payload);
                     }

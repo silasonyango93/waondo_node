@@ -112,11 +112,20 @@ module.exports = class UsersController {
               );
               myUsersObjectPromise
                 .then(function(result) {
-                  var response_object = {
-                    error: false,
-                    ...result
-                  };
-                  resolve(response_object);
+                  
+                  if(!result.userOwnsRole) {
+                    var error_msg = "Access denied";
+                    var response_object = { error: true, error_msg: error_msg, userOwnsRole: false };
+                    resolve(response_object);
+                  } else {
+                    var response_object = {
+                      error: false,
+                      userOwnsRole: true,
+                      ...result
+                    };
+                    resolve(response_object);
+                  }
+                  
                 })
                 
             } else {
