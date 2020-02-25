@@ -1449,44 +1449,79 @@ and two grandchildren(Tables five and six) from one child(TableFour)
     });
   }
 
-
-  static getAUserFullSessionDetails(userId,attemptedRoleCode) {
+  static getAUserFullSessionDetails(userId, attemptedRoleCode) {
     return new Promise(function(resolve, reject) {
-      
       con.query(
-          "SELECT * FROM users INNER JOIN user_roles ON users.UserId = user_roles.UserId INNER JOIN roles ON user_roles.RoleId = roles.RoleId WHERE users.UserId = "+userId+" AND roles.RoleCode = "+attemptedRoleCode+";",
-          function(err, userRolesResult) {
-            if (err) {
-              reject(err);
-            } else if(!userRolesResult.length) {
-              const payload = {
-                userOwnsRole: false
-              };
-              resolve(payload);
-            }
-            else {
-              //************************************
-              
-                con.query(
-                    "SELECT * FROM user_roles INNER JOIN user_access_privileges ON user_roles.UserRoleId = user_access_privileges.UserRoleId INNER JOIN access_privileges ON access_privileges.AccessPrivilegeId = user_access_privileges.AccessPrivilegeId WHERE user_roles.UserRoleId = "+userRolesResult[0].UserRoleId+";",
-                    function (err, accessPrivilegesResult) {
-                      if (err) {
-                        reject(err);
-                      }
-                      
-                      const payload = {
-                        userOwnsRole: true, userRoles: userRolesResult[0], accessPrivileges: accessPrivilegesResult
-                      };
-                      resolve(payload);
-                    }
-                );
+        "SELECT * FROM users INNER JOIN user_roles ON users.UserId = user_roles.UserId INNER JOIN roles ON user_roles.RoleId = roles.RoleId WHERE users.UserId = " +
+          userId +
+          " AND roles.RoleCode = " +
+          attemptedRoleCode +
+          ";",
+        function(err, userRolesResult) {
+          if (err) {
+            reject(err);
+          } else if (!userRolesResult.length) {
+            const payload = {
+              userOwnsRole: false
+            };
+            resolve(payload);
+          } else {
+            //************************************
 
-              
-              //*************************************
-            }
+            con.query(
+              "SELECT * FROM user_roles INNER JOIN user_access_privileges ON user_roles.UserRoleId = user_access_privileges.UserRoleId INNER JOIN access_privileges ON access_privileges.AccessPrivilegeId = user_access_privileges.AccessPrivilegeId WHERE user_roles.UserRoleId = " +
+                userRolesResult[0].UserRoleId +
+                ";",
+              function(err, accessPrivilegesResult) {
+                if (err) {
+                  reject(err);
+                }
+
+                const payload = {
+                  userOwnsRole: true,
+                  userRoles: userRolesResult[0],
+                  accessPrivileges: accessPrivilegesResult
+                };
+                resolve(payload);
+              }
+            );
+
+            //*************************************
           }
+        }
       );
-      
+    });
+  }
+
+  static getAUserRoles(userId) {
+    return new Promise(function(resolve, reject) {
+      con.query(
+        "SELECT * FROM user_roles INNER JOIN roles ON user_roles.RoleId = roles.RoleId WHERE user_roles.UserId = " +
+          mysql.escape(userId),
+        function(err, result) {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(result);
+          }
+        }
+      );
+    });
+  }
+
+  static getAUserAccessPrivileges(userRoleId) {
+    return new Promise(function(resolve, reject) {
+      con.query(
+        "SELECT * FROM user_access_privileges INNER JOIN access_privileges ON user_access_privileges.AccessPrivilegeId = access_privileges.AccessPrivilegeId WHERE user_access_privileges.UserRoleId = " +
+          mysql.escape(userRoleId),
+        function(err, result) {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(result);
+          }
+        }
+      );
     });
   }
 };

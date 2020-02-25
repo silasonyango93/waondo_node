@@ -46,6 +46,8 @@ app.use((req, res, next) => {
 app.use(require("./routes/users_management/UsersRoutes.js"));
 app.use(require("./routes/users_management/UserRolesRoutes.js"));
 app.use(require("./routes/users_management/RolesRoutes.js"));
+app.use(require("./routes/users_management/AccessPrivilegesRoutes.js"));
+app.use(require("./routes/users_management/UserAccessPrivilegesRoutes.js"));
 
 /*SON/2019-1-04 11:50 - DEVELOPMENT : End User Management*/
 

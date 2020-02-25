@@ -1,16 +1,16 @@
 /*SON/2018-11-06 00:29 - DEVELOPMENT
-This class is the "user_roles" table's model
-class.It receives any CRUD operation 
-requests and hands the over to class 
+This class is the "roles" table's model
+class.It receives any CRUD operation
+requests and hands the over to class
 ModelMaster.It creates an instance of class
 ModelMaster then passes parameters to its
 functions.
 */
 
 const ModelMaster = require("../ModelMaster.js");
-const TableName = "user_roles";
+const TableName = "access_privileges";
 
-module.exports = class UserRolesModel {
+module.exports = class AccessPrivilegesModel {
   constructor() {}
 
   static insert(jsonObject_) {
@@ -146,20 +146,6 @@ module.exports = class UserRolesModel {
         UserIdColumnName,
         UserId
       );
-      myPromise.then(
-        function(result) {
-          resolve(result);
-        },
-        function(err) {
-          reject(err);
-        }
-      );
-    });
-  }
-
-  static getAUserRoles(userId) {
-    return new Promise(function(resolve, reject) {
-      var myPromise = ModelMaster.getAUserRoles(userId);
       myPromise.then(
         function(result) {
           resolve(result);
