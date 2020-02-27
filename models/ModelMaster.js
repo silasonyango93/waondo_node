@@ -1465,6 +1465,11 @@ and two grandchildren(Tables five and six) from one child(TableFour)
               userOwnsRole: false
             };
             resolve(payload);
+          } else if (userRolesResult[0].ConfirmationStatus === 0) {
+            const payload = {
+              userOwnsRole: false
+            };
+            resolve(payload);
           } else {
             //************************************
 
