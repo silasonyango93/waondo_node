@@ -19,7 +19,8 @@ router.use(function timeLog(req, res, next) {
 router.post("/add_user_roles", urlencodedParser, function(request, response) {
   var jsonObject_ = {
     UserId: request.body.UserId,
-    RoleId: request.body.RoleId
+    RoleId: request.body.RoleId,
+    ConfirmationStatus: request.body.ConfirmationStatus
   };
 
   var myPromise = UserRolesController.insert(jsonObject_);
@@ -82,7 +83,8 @@ router.post("/update_user_roles", urlencodedParser, function(
 ) {
   var jsonObject_ = {
     UserId: request.body.UserId,
-    RoleId: request.body.RoleId
+    RoleId: request.body.RoleId,
+    ConfirmationStatus: request.body.ConfirmationStatus
   };
 
   var myPromise = UserRolesController.batch_update(jsonObject_);
@@ -108,7 +110,8 @@ router.post("/update_individual_user_roles", urlencodedParser, function(
 
   var jsonObject_ = {
     UserId: request.body.UserId,
-    RoleId: request.body.RoleId
+    RoleId: request.body.RoleId,
+    ConfirmationStatus: request.body.ConfirmationStatus
   };
 
   var myPromise = UserRolesController.individual_record_update(
@@ -217,7 +220,7 @@ router.post("/user_roles_user_specific_query", urlencodedParser, function(
 });
 
 router.post("/get_a_user_roles", urlencodedParser, function(request, response) {
-  var ColumnName = request.body.ColumnName;
+  var userId = request.body.userId;
 
   var myPromise = UserRolesController.getAUserRoles(userId);
 
