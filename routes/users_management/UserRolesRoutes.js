@@ -109,8 +109,6 @@ router.post("/update_individual_user_roles", urlencodedParser, function(
   var value_ = request.body.ColumnValue;
 
   var jsonObject_ = {
-    UserId: request.body.UserId,
-    RoleId: request.body.RoleId,
     ConfirmationStatus: request.body.ConfirmationStatus
   };
 

@@ -121,8 +121,6 @@ router.post(
     date.setHours(date.getHours() + 0);
 
     var jsonObject_ = {
-      UserRoleId: request.body.UserRoleId,
-      AccessPrivilegeId: request.body.AccessPrivilegeId,
       PermisionStatus: request.body.PermisionStatus
     };
 
