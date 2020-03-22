@@ -306,8 +306,7 @@ individual_update() updates a specific record(s).
 
                 var returned_value_ = {
                   success: true,
-                  message: "Record updated succesfully.",
-                  recordId: result.insertId
+                  message: "Record updated succesfully."
                 };
                 resolve(returned_value_);
               }

@@ -20,13 +20,12 @@ router.post("/add_actual_session_activities", urlencodedParser, function(
   request,
   response
 ) {
+    var date = new Date();
+    date.setHours(date.getHours() + 0);
   var jsonObject_ = {
-    UserId: request.body.UserId,
-    SessionStartDate: request.body.SessionStartDate,
-    SessionEndDate: request.body.SessionEndDate,
-    TermId: request.body.TermId,
-    ActualWeekId: request.body.ActualWeekId,
-    SessionYear: request.body.SessionYear
+      SessionLogId: request.body.SessionLogId,
+      SessionActivityId: request.body.SessionActivityId,
+      SessionActivityDate: date
   };
 
   var myPromise = ActualSessionActivitiesController.insert(jsonObject_);

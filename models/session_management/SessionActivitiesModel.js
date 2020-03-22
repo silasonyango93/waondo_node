@@ -8,7 +8,7 @@ functions.
 */
 
 const ModelMaster = require("../ModelMaster.js");
-const TableName = "session_logs";
+const TableName = "session_activities";
 
 module.exports = class SessionActivitiesModel {
   constructor() {}
