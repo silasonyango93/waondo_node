@@ -35,6 +35,7 @@ router.use(function timeLog(req, res, next) {
 		   
 			Name:request.body.Name,
 			Email:request.body.Email,
+            GenderId:request.body.GenderId,
 			Password:request.body.Password,
 			RegisteredDate:date
 			
