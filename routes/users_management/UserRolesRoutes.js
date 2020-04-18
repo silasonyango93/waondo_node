@@ -234,4 +234,41 @@ router.post("/get_a_user_roles", urlencodedParser, function(request, response) {
   );
 });
 
+
+router.post("/user_has_certain_role", urlencodedParser, function(request, response) {
+  var userId = request.body.userId;
+  var roleCode = request.body.roleCode;
+
+  var myPromise = UserRolesController.checkWhetherAUserHasACertainRole(userId,roleCode);
+
+  myPromise.then(
+      function(result) {
+        var response_object = { results: result };
+        response.send(response_object);
+      },
+      function(err) {
+        response.send("An error occurred");
+        console.log(err);
+      }
+  );
+});
+
+
+router.post("/user_allowed_login_with_certain_role", urlencodedParser, function(request, response) {
+  var userRoleId = request.body.userRoleId;
+
+  var myPromise = UserRolesController.checkUserAllowedLoginWithCertainRole(userRoleId);
+
+  myPromise.then(
+      function(result) {
+        var response_object = { results: result };
+        response.send(response_object);
+      },
+      function(err) {
+        response.send("An error occurred");
+        console.log(err);
+      }
+  );
+});
+
 module.exports = router;

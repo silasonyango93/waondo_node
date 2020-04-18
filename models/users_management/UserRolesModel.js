@@ -170,4 +170,33 @@ module.exports = class UserRolesModel {
       );
     });
   }
+
+  static checkWhetherAUserHasACertainRole(userId,roleCode) {
+    return new Promise(function(resolve, reject) {
+      var myPromise = ModelMaster.checkWhetherAUserHasACertainRole(userId,roleCode);
+      myPromise.then(
+          function(result) {
+            resolve(result);
+          },
+          function(err) {
+            reject(err);
+          }
+      );
+    });
+  }
+
+
+  static checkUserAllowedLoginWithCertainRole(userRoleId) {
+    return new Promise(function(resolve, reject) {
+      var myPromise = ModelMaster.checkUserAllowedLoginWithCertainRole(userRoleId);
+      myPromise.then(
+          function(result) {
+            resolve(result);
+          },
+          function(err) {
+            reject(err);
+          }
+      );
+    });
+  }
 };

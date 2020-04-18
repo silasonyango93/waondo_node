@@ -16,7 +16,7 @@ var port = process.env.PORT || 5000;
 
 app.use(cors());
 dbcredentials = {
-  host: "mysql-db",
+  host: "localhost",
   user: "silas",
   password: "8032",
   database: "waondo",
@@ -105,7 +105,7 @@ app.use(function(err, req, res, next) {
   res.status(500).send("Something broke!");
 });
 
-const server = app.listen(8080, () => {
+const server = app.listen(5000, () => {
   const host = server.address().address;
   const port = server.address().port;
 

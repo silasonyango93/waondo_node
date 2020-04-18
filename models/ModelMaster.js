@@ -1551,4 +1551,36 @@ and two grandchildren(Tables five and six) from one child(TableFour)
       );
     });
   }
+
+
+  static checkWhetherAUserHasACertainRole(userId,roleCode) {
+    return new Promise(function(resolve, reject) {
+      con.query(
+          "SELECT * FROM roles INNER JOIN user_roles ON roles.RoleId = user_roles.RoleId WHERE roles.RoleCode = "+roleCode+" AND user_roles.UserId = "+userId+" AND user_roles.ConfirmationStatus = 1;",
+          function(err, result) {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(result);
+            }
+          }
+      );
+    });
+  }
+
+
+  static checkUserAllowedLoginWithCertainRole(userRoleId) {
+    return new Promise(function(resolve, reject) {
+      con.query(
+          "SELECT * FROM user_roles INNER JOIN user_access_privileges ON user_roles.UserRoleId = user_access_privileges.UserRoleId INNER JOIN access_privileges ON access_privileges.AccessPrivilegeId = user_access_privileges.AccessPrivilegeId WHERE user_roles.UserRoleId = "+userRoleId+" AND access_privileges.AccessPrivilegeCode = 1 AND user_access_privileges.PermisionStatus = 1;",
+          function(err, result) {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(result);
+            }
+          }
+      );
+    });
+  }
 };

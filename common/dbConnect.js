@@ -3,7 +3,7 @@ var dbcredentials;
 
 
 const con = mysql.createPool({
-    host: "mysql-db",
+    host: "localhost",
     user: "silas",
     password: "8032",
     database: "waondo",
