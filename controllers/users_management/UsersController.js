@@ -7,6 +7,7 @@ passes the calls down to the "UsersModel" class
 */
 
 const ModelMaster = require("../../models/ModelMaster.js");
+const TransactionServiceConnector = require("../../services/transaction_service/TransactionServiceConnector"); 
 const UsersModel = require("../../models/users_management/UsersModel.js");
 const crypto = require("crypto");
 var pbkdf2 = require("pbkdf2");
@@ -76,73 +77,19 @@ module.exports = class UsersController {
     });
   }
 
-  static user_login(jsonObject_) {
-    return new Promise(function(resolve, reject) {
+  static async user_login(jsonObject_) {
+    
       var TableName = "users";
       var SearchColumn = "Email";
       var SearchValue = jsonObject_.AttemptedEmail;
 
-      var myModelMasterPromise = ModelMaster.selectSpecific(
+      var user = ModelMaster.promiselessSelectSpecific(
         TableName,
         SearchColumn,
         SearchValue
       );
-
-      myModelMasterPromise.then(
-        function(userExistsResult) {
-          if (userExistsResult.length === 0) {
-            var error_msg = "There is no staff member by this email";
-            var response_object = { error: true, error_msg: error_msg };
-            resolve(response_object);
-          } else {
-            // var loginResponse = [];
-            var hash = crypto.createHmac(
-              "sha512",
-              userExistsResult[0].Salt
-            ); /** Hashing algorithm sha512 */
-            hash.update(jsonObject_.AttemptedPassword);
-            var Attempted_encrypted_Password = hash.digest("hex");
-
-            if (
-              Attempted_encrypted_Password ===
-              userExistsResult[0].EncryptedPassword
-            ) {
-              var myUsersObjectPromise = ModelMaster.getAUserFullSessionDetails(
-                userExistsResult[0].UserId,jsonObject_.AttemptedRoleCode
-              );
-              myUsersObjectPromise
-                .then(function(result) {
-                  
-                  if(!result.userOwnsRole) {
-                    var error_msg = "Access denied";
-                    var response_object = { error: true, error_msg: error_msg, userOwnsRole: false };
-                    resolve(response_object);
-                  } else {
-                    var response_object = {
-                      error: false,
-                      userOwnsRole: true,
-                      ...result
-                    };
-                    resolve(response_object);
-                  }
-                  
-                })
-                
-            } else {
-              var error_msg = "Login failed";
-              var response_object = { error: true, error_msg: error_msg };
-
-              resolve(response_object);
-            }
-
-            //loginResponse.push(response_object);
-          }
-        },
-        function(err) {
-          reject(err);
-        }
-      );
-    });
+      
+      console.log(user);
   }
 
   static get_all_users() {
@@ -253,5 +200,11 @@ module.exports = class UsersController {
         }
       );
     });
+  }
+  
+  
+  static async transactionServiceFetchAUserRoles() {
+    
+    return await TransactionServiceConnector.promiselessTransactionsServiceGetAll("/users/get_users_roles_and_access_privileges");
   }
 };

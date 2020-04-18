@@ -104,6 +104,29 @@ your result
     });
   }
 
+
+  static async promiselessSelectSpecific(tableName, ColumnName, value_) {
+    
+      var sql =
+          "SELECT * FROM " +
+          tableName +
+          " WHERE " +
+          ColumnName +
+          " = " +
+          mysql.escape(value_);
+      con.query(sql, function(err, result) {
+        if (err) {
+          return err;
+        } else {
+          var returned_value_ = result;
+          return returned_value_;
+        }
+      });
+   
+  }
+  
+  
+
   /*SON/2018-11-06 00:29 - DEVELOPMENT
 	
 The selectSpecific() is to select specific a
