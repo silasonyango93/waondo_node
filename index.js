@@ -10,6 +10,9 @@ const mysql = require("mysql");
 const express = require("express");
 const app = express();
 const path = require("path");
+var fs = require("fs");
+const multer = require("multer");
+const upload = multer({ dest: __dirname + "/uploads/" });
 var dbcredentials;
 var cors = require("cors");
 var port = process.env.PORT || 5000;
@@ -40,6 +43,32 @@ app.use((req, res, next) => {
 
   next();
 });
+
+app.get("/display_image", (req, res) => {
+  //res.sendFile(path.join(__dirname, "./uploads/df37ba09d301ed7e28a5ac7bdbd36a92"));
+  var imageID = req.query.imageID;
+  res.send('<img src="/' + imageID + '">');
+});
+
+app.get("/web_display_image", (req, res) => {
+  var imageID = req.query.imageID;
+  res.sendFile(path.join(__dirname, "/uploads/" + imageID));
+});
+
+
+app.post("/upload_images", upload.single("file"), function(req, res) {
+  var file = __dirname + "/uploads/" + req.file.filename;
+  fs.rename(req.file.path, file, function(err) {
+    if (err) {
+      console.log(err);
+      res.send(500);
+    } else {
+      res.send(req.file.filename);
+      console.log(req.file.filename);
+    }
+  });
+});
+
 
 /*SON/2019-1-04 11:50 - DEVELOPMENT : Start User Management*/
 

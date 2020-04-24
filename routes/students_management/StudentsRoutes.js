@@ -23,10 +23,12 @@ router.post("/add_students", urlencodedParser, function(request, response) {
   var jsonObject_ = {
     AdmissionNo: request.body.AdmissionNo,
     StudentName: request.body.StudentName,
-    StudentGender: request.body.StudentGender,
+    GenderId: request.body.GenderId,
+    StudentDOB: request.body.StudentDOB,
     StudentTypeId: request.body.StudentTypeId,
     ClassId: request.body.ClassId,
-    AdmissionDate: date
+    AdmissionDate: date,
+    ProfPicName: request.body.ProfPicName,
   };
 
   var myPromise = StudentsController.insert(jsonObject_);
