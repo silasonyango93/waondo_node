@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c7421812-75c3-4c93-8258-122a1b8bed28" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/k8s/uat/deployment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/uat/deployment.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/k8s/uat/mysql.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/uat/mysql.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/ModelMaster.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/ModelMaster.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -125,7 +120,7 @@
       <workItem from="1587294202665" duration="1041000" />
       <workItem from="1587399668796" duration="692000" />
       <workItem from="1587466204604" duration="657000" />
-      <workItem from="1587565196974" duration="12112000" />
+      <workItem from="1587565196974" duration="12948000" />
     </task>
     <servers />
   </component>
