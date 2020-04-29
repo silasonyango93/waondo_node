@@ -118,6 +118,7 @@ app.use(require("./routes/fee_management/CorrectionDescriptionsRoutes.js"));
 app.use(require("./routes/fee_management/FeeCorrectionsRoutes.js"));
 app.use(require("./routes/fee_management/TransactionsRoutes.js"));
 app.use(require("./routes/fee_management/TransactionDescriptionsRoutes.js"));
+app.use(require("./routes/fee_management/FeeComponentsRoutes.js"));
 
 /*SON/2019-1-04 11:50 - DEVELOPMENT : End Term Configurations*/
 

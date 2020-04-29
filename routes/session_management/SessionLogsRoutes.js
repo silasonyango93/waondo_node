@@ -108,36 +108,33 @@ router.post("/update_session_logs", urlencodedParser, function(
 });
 
 router.post("/update_individual_session_logs", urlencodedParser, function(
-  request,
-  response
+    request,
+    response
 ) {
+  var date = new Date();
+  date.setHours(date.getHours() + 0);
   var column_name = request.body.ColumnName;
   var value_ = request.body.ColumnValue;
 
   var jsonObject_ = {
-    UserId: request.body.UserId,
-    SessionStartDate: request.body.SessionStartDate,
-    SessionEndDate: request.body.SessionEndDate,
-    TermId: request.body.TermId,
-    ActualWeekId: request.body.ActualWeekId,
-    SessionYear: request.body.SessionYear
+    SessionEndDate: date
   };
 
   var myPromise = SessionLogsController.individual_record_update(
-    column_name,
-    value_,
-    jsonObject_
+      column_name,
+      value_,
+      jsonObject_
   );
 
   myPromise.then(
-    function(result) {
-      var response_object = { results: result };
-      response.send(response_object);
-    },
-    function(err) {
-      response.send("An error occurred");
-      console.log(err);
-    }
+      function(result) {
+        var response_object = { results: result };
+        response.send(response_object);
+      },
+      function(err) {
+        response.send("An error occurred");
+        console.log(err);
+      }
   );
 });
 

@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="c7421812-75c3-4c93-8258-122a1b8bed28" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/waondo.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/session_management/SessionLogsRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/session_management/SessionLogsRoutes.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -122,7 +123,8 @@
       <workItem from="1587399668796" duration="692000" />
       <workItem from="1587466204604" duration="657000" />
       <workItem from="1587565196974" duration="12948000" />
-      <workItem from="1587800714237" duration="340000" />
+      <workItem from="1587800714237" duration="2669000" />
+      <workItem from="1588168598510" duration="1675000" />
     </task>
     <servers />
   </component>
