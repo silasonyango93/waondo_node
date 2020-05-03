@@ -55,7 +55,6 @@ app.get("/web_display_image", (req, res) => {
   res.sendFile(path.join(__dirname, "/uploads/" + imageID));
 });
 
-
 app.post("/upload_images", upload.single("file"), function(req, res) {
   var file = __dirname + "/uploads/" + req.file.filename;
   fs.rename(req.file.path, file, function(err) {
@@ -68,7 +67,6 @@ app.post("/upload_images", upload.single("file"), function(req, res) {
     }
   });
 });
-
 
 /*SON/2019-1-04 11:50 - DEVELOPMENT : Start User Management*/
 
@@ -119,6 +117,12 @@ app.use(require("./routes/fee_management/FeeCorrectionsRoutes.js"));
 app.use(require("./routes/fee_management/TransactionsRoutes.js"));
 app.use(require("./routes/fee_management/TransactionDescriptionsRoutes.js"));
 app.use(require("./routes/fee_management/FeeComponentsRoutes.js"));
+app.use(require("./routes/fee_management/FeeStructuresRoutes.js"));
+app.use(require("./routes/fee_management/ClassFeeStructuresRoutes.js"));
+app.use(require("./routes/fee_management/ClassFeeStructureBreakdownRoutes.js"));
+app.use(
+  require("./routes/fee_management/ClassFeeStructureComponentsRoutes.js")
+);
 
 /*SON/2019-1-04 11:50 - DEVELOPMENT : End Term Configurations*/
 
