@@ -20,10 +20,13 @@ router.post("/add_fee_structures", urlencodedParser, function(
   request,
   response
 ) {
+
+  var date = new Date();
+  date.setHours(date.getHours() + 0);
   var jsonObject_ = {
     UserId: request.body.UserId,
     FeeStructureDescription: request.body.FeeStructureDescription,
-    DateCreated: request.body.DateCreated,
+    DateCreated: date,
     IsCurrentFeeStructure: request.body.IsCurrentFeeStructure,
     IsProspect: request.body.IsProspect
   };
