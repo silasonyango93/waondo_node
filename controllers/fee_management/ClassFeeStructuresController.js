@@ -158,4 +158,20 @@ module.exports = class ClassFeeStructuresController {
       );
     });
   }
+
+  static getAllClassFeeStructuresByFullDescription() {
+    return new Promise(function(resolve, reject) {
+      var myPromise = ClassFeeStructuresModel.getAllClassFeeStructuresByFullDescription();
+
+      myPromise.then(
+          function(result) {
+            resolve(result);
+          },
+          function(err) {
+            reject(err);
+          }
+      );
+    });
+  }
+  
 };

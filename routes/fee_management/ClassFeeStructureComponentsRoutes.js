@@ -22,7 +22,7 @@ router.post("/add_class_fee_structure_components", urlencodedParser, function(
 ) {
   var jsonObject_ = {
     ClassFeeStructureId: request.body.ClassFeeStructureId,
-    FeeComponentName: request.body.FeeComponentName,
+      FeeComponentId: request.body.FeeComponentId,
     FeeComponentRatio: request.body.FeeComponentRatio
   };
 

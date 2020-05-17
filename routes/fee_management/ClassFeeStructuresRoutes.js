@@ -226,4 +226,24 @@ router.post(
   }
 );
 
+
+router.post("/get_all_class_fee_structures_full_description", urlencodedParser, function(
+    request,
+    response
+) {
+    var myPromise = ClassFeeStructuresController.getAllClassFeeStructuresByFullDescription();
+
+    myPromise.then(
+        function(result) {
+            var response_object = { results: result };
+            response.send(response_object);
+        },
+        function(err) {
+            console.log(err);
+            response.send("An error occurred");
+        }
+    );
+});
+
+
 module.exports = router;

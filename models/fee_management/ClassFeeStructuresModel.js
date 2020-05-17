@@ -156,4 +156,19 @@ module.exports = class ClassFeeStructuresModel {
       );
     });
   }
+
+  static getAllClassFeeStructuresByFullDescription() {
+    return new Promise(function(resolve, reject) {
+      var myPromise = ModelMaster.getAllClassFeeStructuresByFullDescription();
+      myPromise.then(
+          function(result) {
+            resolve(result);
+          },
+          function(err) {
+            reject(err);
+          }
+      );
+    });
+  }
+  
 };

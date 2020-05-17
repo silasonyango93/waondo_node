@@ -39,7 +39,10 @@ app.use((req, res, next) => {
       //throw err;
     }
   });
-  console.log("Connection established");
+
+  var date = new Date();
+  date.setHours(date.getHours() + 0);
+  console.log("Client connected at :-  "+date);
 
   next();
 });

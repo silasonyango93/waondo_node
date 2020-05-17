@@ -1583,4 +1583,21 @@ and two grandchildren(Tables five and six) from one child(TableFour)
       );
     });
   }
+
+
+  static getAllClassFeeStructuresByFullDescription() {
+    return new Promise(function(resolve, reject) {
+      con.query(
+          "SELECT * FROM class_fee_structures INNER JOIN academic_class_levels ON class_fee_structures.AcademicClassLevelId = academic_class_levels.AcademicClassLevelId;",
+          function(err, result) {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(result);
+            }
+          }
+      );
+    });
+  }
+  
 };
