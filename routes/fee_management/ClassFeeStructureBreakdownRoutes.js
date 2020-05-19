@@ -233,4 +233,27 @@ router.post(
   }
 );
 
+router.post(
+    "/get_fee_structure_for_particular_student_for_particular_term",
+    urlencodedParser,
+    function(request, response) {
+        var termIterationId = request.body.termIterationId;
+        var academicClassLevelId = request.body.academicClassLevelId;
+
+        var myPromise = ClassFeeStructureBreakdownController.getFeeStructureForParticularStudentForParticularTerm(academicClassLevelId,termIterationId);
+
+        myPromise.then(
+            function(result) {
+                var response_object = { results: result };
+                response.send(response_object);
+            },
+            function(err) {
+                response.send("An error occurred");
+                console.log(err);
+            }
+        );
+    }
+);
+
+
 module.exports = router;

@@ -156,4 +156,19 @@ module.exports = class ClassFeeStructureBreakdownModel {
       );
     });
   }
+
+  static getFeeStructureForParticularStudentForParticularTerm(academicClassLevelId,termIterationId) {
+    return new Promise(function(resolve, reject) {
+      var myPromise = ModelMaster.getFeeStructureForParticularStudentForParticularTerm(academicClassLevelId,termIterationId);
+      myPromise.then(
+          function(result) {
+            resolve(result);
+          },
+          function(err) {
+            reject(err);
+          }
+      );
+    });
+  }
+  
 };

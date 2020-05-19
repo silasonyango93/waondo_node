@@ -177,4 +177,21 @@ module.exports = class TermController {
       );
     });
   }
+
+
+  static getTerm(searchDate) {
+    return new Promise(function(resolve, reject) {
+      var myPromise = TermModel.getTerm(searchDate);
+
+      myPromise.then(
+          function(result) {
+            resolve(result);
+          },
+          function(err) {
+            reject(err);
+          }
+      );
+    });
+  }
+  
 };

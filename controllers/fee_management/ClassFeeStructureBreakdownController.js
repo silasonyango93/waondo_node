@@ -158,4 +158,20 @@ module.exports = class ClassFeeStructureBreakdownController {
       );
     });
   }
+
+  static getFeeStructureForParticularStudentForParticularTerm(academicClassLevelId,termIterationId) {
+    return new Promise(function(resolve, reject) {
+      var myPromise = ClassFeeStructureBreakdownModel.getFeeStructureForParticularStudentForParticularTerm(academicClassLevelId,termIterationId);
+
+      myPromise.then(
+          function(result) {
+            resolve(result);
+          },
+          function(err) {
+            reject(err);
+          }
+      );
+    });
+  }
+  
 };

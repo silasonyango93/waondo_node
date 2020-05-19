@@ -244,4 +244,26 @@ router.post("/get_all_current_year_terms", urlencodedParser, function(
   );
 });
 
+
+router.post("/get_term_by_date", urlencodedParser, function(
+    request,
+    response
+) {
+
+  var searchDate = request.body.searchDate;
+
+  var myPromise = TermController.getTerm(searchDate);
+
+  myPromise.then(
+      function(result) {
+        var response_object = { results: result };
+        response.send(response_object);
+      },
+      function(err) {
+        response.send("An error occurred");
+        console.log(err);
+      }
+  );
+});
+
 module.exports = router;

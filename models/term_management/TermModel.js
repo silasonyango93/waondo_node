@@ -181,4 +181,19 @@ module.exports = class TermModel {
       );
     });
   }
+
+  static getTerm(searchDate) {
+    return new Promise(function(resolve, reject) {
+      var myPromise = ModelMaster.getTerm(searchDate);
+      myPromise.then(
+          function(result) {
+            resolve(result);
+          },
+          function(err) {
+            reject(err);
+          }
+      );
+    });
+  }
+  
 };

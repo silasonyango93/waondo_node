@@ -167,4 +167,20 @@ module.exports = class ClassController {
       );
     });
   }
+
+  static getAStudentClassDetails(studentId) {
+    return new Promise(function(resolve, reject) {
+      var myPromise = ClassModel.getAStudentClassDetails(studentId);
+
+      myPromise.then(
+          function(result) {
+            resolve(result);
+          },
+          function(err) {
+            reject(err);
+          }
+      );
+    });
+  }
+  
 };

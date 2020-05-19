@@ -240,4 +240,27 @@ router.post(
   }
 );
 
+router.post(
+    "/get_a_student_class_details",
+    urlencodedParser,
+    function(request, response) {
+
+      var studentId = request.body.studentId;
+      
+      var myPromise = ClassController.getAStudentClassDetails(studentId);
+
+      myPromise.then(
+          function(result) {
+            var response_object = { results: result };
+            response.send(response_object);
+          },
+          function(err) {
+            response.send("An error occurred");
+            console.log(err);
+          }
+      );
+    }
+);
+
+
 module.exports = router;

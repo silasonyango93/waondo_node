@@ -1599,5 +1599,51 @@ and two grandchildren(Tables five and six) from one child(TableFour)
       );
     });
   }
+
+  static getFeeStructureForParticularStudentForParticularTerm(academicClassLevelId,termIterationId) {
+    return new Promise(function(resolve, reject) {
+      con.query(
+          "SELECT * FROM fee_structures INNER JOIN class_fee_structures ON fee_structures.FeeStructureId = class_fee_structures.FeeStructureId INNER JOIN class_fee_structure_breakdown ON class_fee_structures.ClassFeeStructureId = class_fee_structure_breakdown.ClassFeeStructureId WHERE fee_structures.IsCurrentFeeStructure = 1 AND class_fee_structures.AcademicClassLevelId = "+academicClassLevelId+" AND class_fee_structure_breakdown.TermIterationId = "+termIterationId+";",
+          function(err, result) {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(result);
+            }
+          }
+      );
+    });
+  }
+
+
+  static getTerm(searchDate) {
+    return new Promise(function(resolve, reject) {
+      con.query(
+          "SELECT * FROM actual_terms INNER JOIN term_iterations ON term_iterations.TermIterationId = actual_terms.TermIterationId WHERE "+searchDate+" BETWEEN actual_terms.TermStartDate AND actual_terms.TermEndDate;",
+          function(err, result) {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(result);
+            }
+          }
+      );
+    });
+  }
+
+  static getAStudentClassDetails(studentId) {
+    return new Promise(function(resolve, reject) {
+      con.query(
+          "SELECT * FROM academic_class_levels INNER JOIN lots ON academic_class_levels.AcademicClassLevelId = lots.AcademicClassLevelId INNER JOIN lot_descriptions ON lot_descriptions.LotDescriptionId = lots.LotDescriptionId INNER JOIN classes ON lots.LotId = classes.LotId INNER JOIN class_streams ON class_streams.ClassStreamId = classes.ClassStreamId INNER JOIN students ON classes.ClassId = students.ClassId WHERE students.StudentId = "+studentId+";",
+          function(err, result) {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(result);
+            }
+          }
+      );
+    });
+  }
   
 };

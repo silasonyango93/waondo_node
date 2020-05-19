@@ -170,4 +170,19 @@ module.exports = class ClassModel {
       );
     });
   }
+
+  static getAStudentClassDetails(studentId) {
+    return new Promise(function(resolve, reject) {
+      var myPromise = ModelMaster.getAStudentClassDetails(studentId);
+      myPromise.then(
+          function(result) {
+            resolve(result);
+          },
+          function(err) {
+            reject(err);
+          }
+      );
+    });
+  }
+  
 };
