@@ -159,19 +159,41 @@ module.exports = class ClassFeeStructureBreakdownController {
     });
   }
 
-  static getFeeStructureForParticularStudentForParticularTerm(academicClassLevelId,termIterationId) {
+  static getFeeStructureForParticularStudentForParticularTerm(
+    academicClassLevelId,
+    termIterationId
+  ) {
     return new Promise(function(resolve, reject) {
-      var myPromise = ClassFeeStructureBreakdownModel.getFeeStructureForParticularStudentForParticularTerm(academicClassLevelId,termIterationId);
+      var myPromise = ClassFeeStructureBreakdownModel.getFeeStructureForParticularStudentForParticularTerm(
+        academicClassLevelId,
+        termIterationId
+      );
 
       myPromise.then(
-          function(result) {
-            resolve(result);
-          },
-          function(err) {
-            reject(err);
-          }
+        function(result) {
+          resolve(result);
+        },
+        function(err) {
+          reject(err);
+        }
       );
     });
   }
-  
+
+  static getFeeStructureForParticularAcademicClassLevel(academicClassLevelId) {
+    return new Promise(function(resolve, reject) {
+      var myPromise = ClassFeeStructureBreakdownModel.getFeeStructureForParticularAcademicClassLevel(
+        academicClassLevelId
+      );
+
+      myPromise.then(
+        function(result) {
+          resolve(result);
+        },
+        function(err) {
+          reject(err);
+        }
+      );
+    });
+  }
 };

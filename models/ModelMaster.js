@@ -104,28 +104,23 @@ your result
     });
   }
 
-
   static async promiselessSelectSpecific(tableName, ColumnName, value_) {
-    
-      var sql =
-          "SELECT * FROM " +
-          tableName +
-          " WHERE " +
-          ColumnName +
-          " = " +
-          mysql.escape(value_);
-      con.query(sql, function(err, result) {
-        if (err) {
-          return err;
-        } else {
-          var returned_value_ = result;
-          return returned_value_;
-        }
-      });
-   
+    var sql =
+      "SELECT * FROM " +
+      tableName +
+      " WHERE " +
+      ColumnName +
+      " = " +
+      mysql.escape(value_);
+    con.query(sql, function(err, result) {
+      if (err) {
+        return err;
+      } else {
+        var returned_value_ = result;
+        return returned_value_;
+      }
+    });
   }
-  
-  
 
   /*SON/2018-11-06 00:29 - DEVELOPMENT
 	
@@ -1552,81 +1547,93 @@ and two grandchildren(Tables five and six) from one child(TableFour)
     });
   }
 
-
-  static checkWhetherAUserHasACertainRole(userId,roleCode) {
+  static checkWhetherAUserHasACertainRole(userId, roleCode) {
     return new Promise(function(resolve, reject) {
       con.query(
-          "SELECT * FROM roles INNER JOIN user_roles ON roles.RoleId = user_roles.RoleId WHERE roles.RoleCode = "+roleCode+" AND user_roles.UserId = "+userId+" AND user_roles.ConfirmationStatus = 1;",
-          function(err, result) {
-            if (err) {
-              reject(err);
-            } else {
-              resolve(result);
-            }
+        "SELECT * FROM roles INNER JOIN user_roles ON roles.RoleId = user_roles.RoleId WHERE roles.RoleCode = " +
+          roleCode +
+          " AND user_roles.UserId = " +
+          userId +
+          " AND user_roles.ConfirmationStatus = 1;",
+        function(err, result) {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(result);
           }
+        }
       );
     });
   }
-
 
   static checkUserAllowedLoginWithCertainRole(userRoleId) {
     return new Promise(function(resolve, reject) {
       con.query(
-          "SELECT * FROM user_roles INNER JOIN user_access_privileges ON user_roles.UserRoleId = user_access_privileges.UserRoleId INNER JOIN access_privileges ON access_privileges.AccessPrivilegeId = user_access_privileges.AccessPrivilegeId WHERE user_roles.UserRoleId = "+userRoleId+" AND access_privileges.AccessPrivilegeCode = 1 AND user_access_privileges.PermisionStatus = 1;",
-          function(err, result) {
-            if (err) {
-              reject(err);
-            } else {
-              resolve(result);
-            }
+        "SELECT * FROM user_roles INNER JOIN user_access_privileges ON user_roles.UserRoleId = user_access_privileges.UserRoleId INNER JOIN access_privileges ON access_privileges.AccessPrivilegeId = user_access_privileges.AccessPrivilegeId WHERE user_roles.UserRoleId = " +
+          userRoleId +
+          " AND access_privileges.AccessPrivilegeCode = 1 AND user_access_privileges.PermisionStatus = 1;",
+        function(err, result) {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(result);
           }
+        }
       );
     });
   }
-
 
   static getAllClassFeeStructuresByFullDescription() {
     return new Promise(function(resolve, reject) {
       con.query(
-          "SELECT * FROM class_fee_structures INNER JOIN academic_class_levels ON class_fee_structures.AcademicClassLevelId = academic_class_levels.AcademicClassLevelId;",
-          function(err, result) {
-            if (err) {
-              reject(err);
-            } else {
-              resolve(result);
-            }
+        "SELECT * FROM class_fee_structures INNER JOIN academic_class_levels ON class_fee_structures.AcademicClassLevelId = academic_class_levels.AcademicClassLevelId;",
+        function(err, result) {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(result);
           }
+        }
       );
     });
   }
 
-  static getFeeStructureForParticularStudentForParticularTerm(academicClassLevelId,termIterationId) {
+  static getFeeStructureForParticularStudentForParticularTerm(
+    academicClassLevelId,
+    termIterationId
+  ) {
     return new Promise(function(resolve, reject) {
       con.query(
-          "SELECT * FROM fee_structures INNER JOIN class_fee_structures ON fee_structures.FeeStructureId = class_fee_structures.FeeStructureId INNER JOIN class_fee_structure_breakdown ON class_fee_structures.ClassFeeStructureId = class_fee_structure_breakdown.ClassFeeStructureId WHERE fee_structures.IsCurrentFeeStructure = 1 AND class_fee_structures.AcademicClassLevelId = "+academicClassLevelId+" AND class_fee_structure_breakdown.TermIterationId = "+termIterationId+";",
-          function(err, result) {
-            if (err) {
-              reject(err);
-            } else {
-              resolve(result);
-            }
+        "SELECT * FROM fee_structures INNER JOIN class_fee_structures ON fee_structures.FeeStructureId = class_fee_structures.FeeStructureId INNER JOIN class_fee_structure_breakdown ON class_fee_structures.ClassFeeStructureId = class_fee_structure_breakdown.ClassFeeStructureId WHERE fee_structures.IsCurrentFeeStructure = 1 AND class_fee_structures.AcademicClassLevelId = " +
+          academicClassLevelId +
+          " AND class_fee_structure_breakdown.TermIterationId = " +
+          termIterationId +
+          ";",
+        function(err, result) {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(result);
           }
+        }
       );
     });
   }
-
 
   static getTerm(searchDate) {
     return new Promise(function(resolve, reject) {
+      searchDate = "'" + searchDate + "'";
       con.query(
-          "SELECT * FROM actual_terms INNER JOIN term_iterations ON term_iterations.TermIterationId = actual_terms.TermIterationId WHERE "+searchDate+" BETWEEN actual_terms.TermStartDate AND actual_terms.TermEndDate;",
-          function(err, result) {
-            if (err) {
-              reject(err);
-            } else {
-              resolve(result);
-            }
+        "SELECT * FROM actual_terms INNER JOIN term_iterations ON term_iterations.TermIterationId = actual_terms.TermIterationId WHERE " +
+          searchDate +
+          " BETWEEN actual_terms.TermStartDate AND actual_terms.TermEndDate;",
+        function(err, result) {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(result);
           }
+        }
       );
     });
   }
@@ -1634,16 +1641,34 @@ and two grandchildren(Tables five and six) from one child(TableFour)
   static getAStudentClassDetails(studentId) {
     return new Promise(function(resolve, reject) {
       con.query(
-          "SELECT * FROM academic_class_levels INNER JOIN lots ON academic_class_levels.AcademicClassLevelId = lots.AcademicClassLevelId INNER JOIN lot_descriptions ON lot_descriptions.LotDescriptionId = lots.LotDescriptionId INNER JOIN classes ON lots.LotId = classes.LotId INNER JOIN class_streams ON class_streams.ClassStreamId = classes.ClassStreamId INNER JOIN students ON classes.ClassId = students.ClassId WHERE students.StudentId = "+studentId+";",
-          function(err, result) {
-            if (err) {
-              reject(err);
-            } else {
-              resolve(result);
-            }
+        "SELECT * FROM academic_class_levels INNER JOIN lots ON academic_class_levels.AcademicClassLevelId = lots.AcademicClassLevelId INNER JOIN lot_descriptions ON lot_descriptions.LotDescriptionId = lots.LotDescriptionId INNER JOIN classes ON lots.LotId = classes.LotId INNER JOIN class_streams ON class_streams.ClassStreamId = classes.ClassStreamId INNER JOIN students ON classes.ClassId = students.ClassId WHERE students.StudentId = " +
+          studentId +
+          ";",
+        function(err, result) {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(result);
           }
+        }
       );
     });
   }
-  
+
+  static getFeeStructureForParticularAcademicClassLevel(academicClassLevelId) {
+    return new Promise(function(resolve, reject) {
+      con.query(
+        "SELECT * FROM fee_structures INNER JOIN class_fee_structures ON fee_structures.FeeStructureId = class_fee_structures.FeeStructureId INNER JOIN class_fee_structure_breakdown ON class_fee_structures.ClassFeeStructureId = class_fee_structure_breakdown.ClassFeeStructureId WHERE fee_structures.IsCurrentFeeStructure = 1 AND class_fee_structures.AcademicClassLevelId = " +
+          academicClassLevelId +
+          ";",
+        function(err, result) {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(result);
+          }
+        }
+      );
+    });
+  }
 };
