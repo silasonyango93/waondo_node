@@ -159,12 +159,14 @@ module.exports = class ClassFeeStructureBreakdownModel {
 
   static getFeeStructureForParticularStudentForParticularTerm(
     academicClassLevelId,
-    termIterationId
+    termIterationId,
+    studentResidenceId
   ) {
     return new Promise(function(resolve, reject) {
       var myPromise = ModelMaster.getFeeStructureForParticularStudentForParticularTerm(
         academicClassLevelId,
-        termIterationId
+        termIterationId,
+          studentResidenceId
       );
       myPromise.then(
         function(result) {
@@ -177,10 +179,14 @@ module.exports = class ClassFeeStructureBreakdownModel {
     });
   }
 
-  static getFeeStructureForParticularAcademicClassLevel(academicClassLevelId) {
+  static getFeeStructureForParticularAcademicClassLevel(
+    academicClassLevelId,
+    studentResidenceId
+  ) {
     return new Promise(function(resolve, reject) {
       var myPromise = ModelMaster.getFeeStructureForParticularAcademicClassLevel(
-        academicClassLevelId
+        academicClassLevelId,
+          studentResidenceId
       );
       myPromise.then(
         function(result) {

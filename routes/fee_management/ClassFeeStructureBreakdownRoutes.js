@@ -23,6 +23,7 @@ router.post("/add_class_fee_structure_breakdown", urlencodedParser, function(
   var jsonObject_ = {
     ClassFeeStructureId: request.body.ClassFeeStructureId,
     TermIterationId: request.body.TermIterationId,
+    StudentResidenceId: request.body.StudentResidenceId,
     FeeAmount: request.body.FeeAmount
   };
 
@@ -239,10 +240,12 @@ router.post(
   function(request, response) {
     var termIterationId = request.body.termIterationId;
     var academicClassLevelId = request.body.academicClassLevelId;
+    var studentResidenceId = request.body.studentResidenceId;
 
     var myPromise = ClassFeeStructureBreakdownController.getFeeStructureForParticularStudentForParticularTerm(
       academicClassLevelId,
-      termIterationId
+      termIterationId,
+      studentResidenceId
     );
 
     myPromise.then(
@@ -263,9 +266,11 @@ router.post(
   urlencodedParser,
   function(request, response) {
     var academicClassLevelId = request.body.academicClassLevelId;
+    var studentResidenceId = request.body.studentResidenceId;
 
     var myPromise = ClassFeeStructureBreakdownController.getFeeStructureForParticularAcademicClassLevel(
-      academicClassLevelId
+      academicClassLevelId,
+      studentResidenceId
     );
 
     myPromise.then(
