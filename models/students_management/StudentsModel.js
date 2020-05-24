@@ -156,4 +156,19 @@ module.exports = class StudentsModel {
       );
     });
   }
+
+  static getAStudentResidenceDetails(studentId) {
+    return new Promise(function(resolve, reject) {
+      var myPromise = ModelMaster.getAStudentResidenceDetails(studentId);
+      myPromise.then(
+          function(result) {
+            resolve(result);
+          },
+          function(err) {
+            reject(err);
+          }
+      );
+    });
+  }
+  
 };

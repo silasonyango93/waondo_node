@@ -222,4 +222,73 @@ router.post("/installments_user_specific_query", urlencodedParser, function(
   );
 });
 
+router.post("/get_installment_paid_on_certain_date", urlencodedParser, function(
+    request,
+    response
+) {
+  var studentId = request.body.studentId;
+
+  var searchDate = request.body.searchDate;
+
+  var myPromise = InstallmentsController.getInstallmentPaidOnCertainDate(studentId, searchDate);
+
+  myPromise.then(
+      function(result) {
+        var response_object = { results: result };
+        response.send(response_object);
+      },
+      function(err) {
+        response.send("An error occurred");
+        console.log(err);
+      }
+  );
+});
+
+
+router.post("/get_installment_between_certain_period", urlencodedParser, function(
+    request,
+    response
+) {
+  var startDate = request.body.startDate;
+
+  var endDate = request.body.endDate;
+
+  var myPromise = InstallmentsController.getInstallmentsBetweenCertainPeriod(startDate, endDate);
+
+  myPromise.then(
+      function(result) {
+        var response_object = { results: result };
+        response.send(response_object);
+      },
+      function(err) {
+        response.send("An error occurred");
+        console.log(err);
+      }
+  );
+});
+
+router.post("/get_installment_for_particular_student_between_certain_period", urlencodedParser, function(
+    request,
+    response
+) {
+
+  var studentId = request.body.studentId;
+  var startDate = request.body.startDate;
+  var endDate = request.body.endDate;
+
+  var myPromise = InstallmentsController.getInstallmentsForParticularStudentBetweenCertainPeriod(studentId,startDate, endDate);
+
+  myPromise.then(
+      function(result) {
+        var response_object = { results: result };
+        response.send(response_object);
+      },
+      function(err) {
+        response.send("An error occurred");
+        console.log(err);
+      }
+  );
+});
+
+
 module.exports = router;

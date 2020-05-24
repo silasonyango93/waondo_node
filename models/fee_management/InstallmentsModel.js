@@ -156,4 +156,47 @@ module.exports = class InstallmentsModel {
       );
     });
   }
+
+  static getInstallmentPaidOnCertainDate(studentId, searchDate) {
+    return new Promise(function(resolve, reject) {
+      var myPromise = ModelMaster.getInstallmentPaidOnCertainDate(studentId, searchDate);
+      myPromise.then(
+          function(result) {
+            resolve(result);
+          },
+          function(err) {
+            reject(err);
+          }
+      );
+    });
+  }
+
+  static getInstallmentsBetweenCertainPeriod(startDate, endDate) {
+    return new Promise(function(resolve, reject) {
+      var myPromise = ModelMaster.getInstallmentsBetweenCertainPeriod(startDate, endDate);
+      myPromise.then(
+          function(result) {
+            resolve(result);
+          },
+          function(err) {
+            reject(err);
+          }
+      );
+    });
+  }
+
+  static getInstallmentsForParticularStudentBetweenCertainPeriod(studentId,startDate, endDate) {
+    return new Promise(function(resolve, reject) {
+      var myPromise = ModelMaster.getInstallmentsForParticularStudentBetweenCertainPeriod(studentId,startDate, endDate);
+      myPromise.then(
+          function(result) {
+            resolve(result);
+          },
+          function(err) {
+            reject(err);
+          }
+      );
+    });
+  }
+  
 };

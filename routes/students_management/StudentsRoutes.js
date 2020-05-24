@@ -230,4 +230,29 @@ router.post("/students_user_specific_query", urlencodedParser, function(
   );
 });
 
+router.post("/get_a_student_residence_details", urlencodedParser, function(
+    request,
+    response
+) {
+  var studentId = request.body.studentId;
+
+  var UserIdColumnName = request.body.UserIdColumnName;
+
+  var UserId = request.body.UserId;
+
+  var myPromise = StudentsController.getAStudentResidenceDetails(studentId)
+
+  myPromise.then(
+      function(result) {
+        var response_object = { results: result };
+        response.send(response_object);
+      },
+      function(err) {
+        response.send("An error occurred");
+        console.log(err);
+      }
+  );
+});
+
+
 module.exports = router;

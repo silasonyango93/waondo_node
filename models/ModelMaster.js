@@ -1625,11 +1625,10 @@ and two grandchildren(Tables five and six) from one child(TableFour)
 
   static getTerm(searchDate) {
     return new Promise(function(resolve, reject) {
-      searchDate = "'" + searchDate + "'";
       con.query(
-        "SELECT * FROM actual_terms INNER JOIN term_iterations ON term_iterations.TermIterationId = actual_terms.TermIterationId WHERE " +
-          searchDate +
-          " BETWEEN actual_terms.TermStartDate AND actual_terms.TermEndDate;",
+        "SELECT * FROM actual_terms INNER JOIN term_iterations ON term_iterations.TermIterationId = actual_terms.TermIterationId WHERE '" +
+         searchDate +
+          "' BETWEEN actual_terms.TermStartDate AND actual_terms.TermEndDate;",
         function(err, result) {
           if (err) {
             reject(err);
@@ -1679,4 +1678,69 @@ and two grandchildren(Tables five and six) from one child(TableFour)
       );
     });
   }
+
+  static getInstallmentPaidOnCertainDate(studentId, searchDate) {
+    return new Promise(function(resolve, reject) {
+      con.query(
+        "SELECT * FROM installments WHERE installments.StudentId =  " +
+          studentId +
+          " AND installments.InstallmentDate LIKE '%" +
+          searchDate +
+          "%'",
+        function(err, result) {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(result);
+          }
+        }
+      );
+    });
+  }
+
+  static getInstallmentsBetweenCertainPeriod(startDate, endDate) {
+    return new Promise(function(resolve, reject) {
+      con.query(
+          "SELECT * FROM students INNER JOIN installments ON students.StudentId = installments.StudentId WHERE installments.InstallmentDate BETWEEN '"+startDate+"' AND '"+endDate+"';",
+          function(err, result) {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(result);
+            }
+          }
+      );
+    });
+  }
+
+  static getAStudentResidenceDetails(studentId) {
+    return new Promise(function(resolve, reject) {
+      con.query(
+          "SELECT * FROM student_residence INNER JOIN students ON student_residence.StudentResidenceId = students.StudentResidenceId WHERE students.StudentId = "+studentId+";",
+          function(err, result) {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(result);
+            }
+          }
+      );
+    });
+  }
+
+  static getInstallmentsForParticularStudentBetweenCertainPeriod(studentId,startDate, endDate) {
+    return new Promise(function(resolve, reject) {
+      con.query(
+          "SELECT * FROM students INNER JOIN installments ON students.StudentId = installments.StudentId WHERE installments.InstallmentDate BETWEEN '"+startDate+"' AND '"+endDate+"' AND students.StudentId = "+studentId+";",
+          function(err, result) {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(result);
+            }
+          }
+      );
+    });
+  }
+
 };
