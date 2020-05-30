@@ -1743,4 +1743,21 @@ and two grandchildren(Tables five and six) from one child(TableFour)
     });
   }
 
+
+  static getUserBySessionLogId(sessionLogId) {
+    return new Promise(function(resolve, reject) {
+      con.query(
+          "SELECT * FROM users INNER JOIN session_logs ON users.UserId = session_logs.UserId WHERE session_logs.SessionLogId = "+sessionLogId+";",
+          function(err, result) {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(result);
+            }
+          }
+      );
+    });
+  }
+
+
 };

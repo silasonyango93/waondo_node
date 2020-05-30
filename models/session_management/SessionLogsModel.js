@@ -156,4 +156,19 @@ module.exports = class SessionLogsModel {
       );
     });
   }
+
+  static getUserBySessionLogId(sessionLogId) {
+    return new Promise(function(resolve, reject) {
+      var myPromise = ModelMaster.getUserBySessionLogId(sessionLogId);
+      myPromise.then(
+          function(result) {
+            resolve(result);
+          },
+          function(err) {
+            reject(err);
+          }
+      );
+    });
+  }
+  
 };

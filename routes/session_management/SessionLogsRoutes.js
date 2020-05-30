@@ -225,4 +225,25 @@ router.post("/session_logs_user_specific_query", urlencodedParser, function(
   );
 });
 
+
+router.post("/get_user_by_session_log", urlencodedParser, function(
+    request,
+    response
+) {
+  var sessionLogId = request.body.sessionLogId;
+
+  var myPromise = SessionLogsController.getUserBySessionLogId(sessionLogId);
+
+  myPromise.then(
+      function(result) {
+        var response_object = { results: result };
+        response.send(response_object);
+      },
+      function(err) {
+        response.send("An error occurred");
+        console.log(err);
+      }
+  );
+});
+
 module.exports = router;
