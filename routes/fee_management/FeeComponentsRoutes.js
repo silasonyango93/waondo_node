@@ -213,4 +213,24 @@ router.post("/fee_components_user_specific_query", urlencodedParser, function(
     );
 });
 
+
+router.post("/get_a_student_fee_components", urlencodedParser, function(
+    request,
+    response
+) {
+    var myPromise = FeeComponentsController.getAStudentFeeComponents(studentId);
+
+    myPromise.then(
+        function(result) {
+            var response_object = { results: result };
+            response.send(response_object);
+        },
+        function(err) {
+            console.log(err);
+            response.send("An error occurred");
+        }
+    );
+});
+
+
 module.exports = router;

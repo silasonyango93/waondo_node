@@ -177,6 +177,20 @@ module.exports = class FeeComponentsController{
     }
 
 
+    static getAStudentFeeComponents(studentId){
+        return new Promise(function(resolve, reject) {
 
+            var myPromise = FeeComponentsModel.getAStudentFeeComponents(studentId);
+
+
+            myPromise.then(function(result) {
+
+                resolve(result);
+            }, function(err) {
+                reject(err);
+            })
+
+        })
+    }
 
 }

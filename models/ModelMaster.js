@@ -1760,4 +1760,20 @@ and two grandchildren(Tables five and six) from one child(TableFour)
   }
 
 
+  static getAStudentFeeComponents(studentId) {
+    return new Promise(function(resolve, reject) {
+      con.query(
+          "SELECT * FROM students INNER JOIN student_fee_components ON students.StudentId = student_fee_components.StudentId INNER JOIN class_fee_structure_components ON class_fee_structure_components.ClassFeeStructureComponentId = student_fee_components.ClassFeeStructureComponentId INNER JOIN fee_components ON fee_components.FeeComponentId = class_fee_structure_components.FeeComponentId WHERE students.StudentId = "+studentId+";",
+          function(err, result) {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(result);
+            }
+          }
+      );
+    });
+  }
+
+
 };

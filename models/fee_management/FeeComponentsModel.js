@@ -156,4 +156,19 @@ module.exports = class FeeComponentsModel {
             );
         });
     }
+
+    static getAStudentFeeComponents(studentId) {
+        return new Promise(function(resolve, reject) {
+            var myPromise = ModelMaster.getAStudentFeeComponents(studentId);
+            myPromise.then(
+                function(result) {
+                    resolve(result);
+                },
+                function(err) {
+                    reject(err);
+                }
+            );
+        });
+    }
+    
 };
