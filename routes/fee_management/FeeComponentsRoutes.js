@@ -218,6 +218,9 @@ router.post("/get_a_student_fee_components", urlencodedParser, function(
     request,
     response
 ) {
+
+    var studentId = request.body.studentId;
+
     var myPromise = FeeComponentsController.getAStudentFeeComponents(studentId);
 
     myPromise.then(
