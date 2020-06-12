@@ -30,7 +30,8 @@ router.use(function timeLog(req, res, next) {
         var	jsonObject_ = {
         
 			
-			LotDescription:request.body.LotDescription
+			LotDescription:request.body.LotDescription,
+            IsAdminLotDescription: 0
 			
 			
         };

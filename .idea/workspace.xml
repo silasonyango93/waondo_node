@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c7421812-75c3-4c93-8258-122a1b8bed28" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/fee_management/FeeComponentsRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/fee_management/FeeComponentsRoutes.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -131,7 +130,14 @@
       <workItem from="1590569055245" duration="94000" />
       <workItem from="1590739367683" duration="4652000" />
       <workItem from="1591001393530" duration="163000" />
-      <workItem from="1591028538504" duration="210000" />
+      <workItem from="1591028538504" duration="1179000" />
+      <workItem from="1591038646054" duration="574000" />
+      <workItem from="1591085327383" duration="2033000" />
+      <workItem from="1591352169957" duration="8000" />
+      <workItem from="1591427971909" duration="6298000" />
+      <workItem from="1591617497277" duration="788000" />
+      <workItem from="1591689791393" duration="683000" />
+      <workItem from="1591850760041" duration="2494000" />
     </task>
     <servers />
   </component>

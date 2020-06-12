@@ -31,7 +31,8 @@ router.use(function timeLog(req, res, next) {
         
 			
 			AcademicClassLevelName:request.body.AcademicClassLevelName,
-			HierachyCode:request.body.HierachyCode
+			HierachyCode:request.body.HierachyCode,
+            IsAdminClassLevel: 0
 			
 			
         };

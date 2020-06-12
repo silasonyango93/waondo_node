@@ -23,7 +23,8 @@ router.post("/add_class", urlencodedParser, function(request, response) {
   var jsonObject_ = {
     LotId: request.body.LotId,
     ClassStreamId: request.body.ClassStreamId,
-    RegisteredDate: date
+    RegisteredDate: date,
+      IsAdminClass: 0
   };
 
   var myPromise = ClassController.insert(jsonObject_);

@@ -30,7 +30,8 @@ router.use(function timeLog(req, res, next) {
         var	jsonObject_ = {
         
 			
-			ClassStreamName:request.body.ClassStreamName
+			ClassStreamName:request.body.ClassStreamName,
+            IsAdminClassStream: 0
 			
 			
         };

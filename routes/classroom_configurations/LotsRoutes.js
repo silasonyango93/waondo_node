@@ -23,7 +23,8 @@ router.post("/add_lots", urlencodedParser, function(request, response) {
   var jsonObject_ = {
     LotDescriptionId: request.body.LotDescriptionId,
     AcademicClassLevelId: request.body.AcademicClassLevelId,
-    RegisteredDate: date
+    RegisteredDate: date,
+    IsAdminLot: 0
   };
 
   var myPromise = LotsController.insert(jsonObject_);
