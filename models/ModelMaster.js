@@ -1779,7 +1779,7 @@ and two grandchildren(Tables five and six) from one child(TableFour)
   static getAllStudentsWithAMinimumTermBalance(minimunTermBalance) {
     return new Promise(function(resolve, reject) {
       con.query(
-          "SELECT * FROM academic_class_levels INNER JOIN lots ON academic_class_levels.AcademicClassLevelId = lots.AcademicClassLevelId INNER JOIN lot_descriptions ON lot_descriptions.LotDescriptionId = lots.LotDescriptionId INNER JOIN classes ON lots.LotId = classes.LotId INNER JOIN class_streams ON class_streams.ClassStreamId = classes.ClassStreamId INNER JOIN students ON classes.ClassId = students.ClassId INNER JOIN student_residence ON student_residence.StudentResidenceId = students.StudentResidenceId INNER JOIN fee_statements ON students.StudentId = fee_statements.StudentId WHERE fee_statements.CurrentTermBalance > "+minimunTermBalance+";",
+          "SELECT * FROM academic_class_levels INNER JOIN lots ON academic_class_levels.AcademicClassLevelId = lots.AcademicClassLevelId INNER JOIN lot_descriptions ON lot_descriptions.LotDescriptionId = lots.LotDescriptionId INNER JOIN classes ON lots.LotId = classes.LotId INNER JOIN class_streams ON class_streams.ClassStreamId = classes.ClassStreamId INNER JOIN students ON classes.ClassId = students.ClassId INNER JOIN student_residence ON student_residence.StudentResidenceId = students.StudentResidenceId INNER JOIN gender ON gender.GenderId = students.GenderId INNER JOIN fee_statements ON students.StudentId = fee_statements.StudentId WHERE fee_statements.CurrentTermBalance > "+minimunTermBalance+";",
           function(err, result) {
             if (err) {
               reject(err);
@@ -1795,7 +1795,7 @@ and two grandchildren(Tables five and six) from one child(TableFour)
   static getAllStudentsInAClassWithAMinimumTermBalance(classId,minimunTermBalance) {
     return new Promise(function(resolve, reject) {
       con.query(
-          "SELECT * FROM academic_class_levels INNER JOIN lots ON academic_class_levels.AcademicClassLevelId = lots.AcademicClassLevelId INNER JOIN lot_descriptions ON lot_descriptions.LotDescriptionId = lots.LotDescriptionId INNER JOIN classes ON lots.LotId = classes.LotId INNER JOIN class_streams ON class_streams.ClassStreamId = classes.ClassStreamId INNER JOIN students ON classes.ClassId = students.ClassId INNER JOIN student_residence ON student_residence.StudentResidenceId = students.StudentResidenceId INNER JOIN fee_statements ON students.StudentId = fee_statements.StudentId WHERE fee_statements.CurrentTermBalance > "+minimunTermBalance+" AND classes.ClassId = " +classId+ ";",
+          "SELECT * FROM academic_class_levels INNER JOIN lots ON academic_class_levels.AcademicClassLevelId = lots.AcademicClassLevelId INNER JOIN lot_descriptions ON lot_descriptions.LotDescriptionId = lots.LotDescriptionId INNER JOIN classes ON lots.LotId = classes.LotId INNER JOIN class_streams ON class_streams.ClassStreamId = classes.ClassStreamId INNER JOIN students ON classes.ClassId = students.ClassId INNER JOIN student_residence ON student_residence.StudentResidenceId = students.StudentResidenceId INNER JOIN gender ON gender.GenderId = students.GenderId INNER JOIN fee_statements ON students.StudentId = fee_statements.StudentId WHERE fee_statements.CurrentTermBalance > "+minimunTermBalance+" AND classes.ClassId = " +classId+ ";",
           function(err, result) {
             if (err) {
               reject(err);
