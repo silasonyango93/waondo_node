@@ -300,6 +300,45 @@ router.post('/fee_user_specific_query',urlencodedParser,function(request,respons
 
 
 
+router.post('/get_all_students_with_minimum_term_balance',urlencodedParser,function(request,response){
+
+    var minimunTermBalance=request.body.minimunTermBalance;
+    
+    var myPromise = FeeController.getAllStudentsWithAMinimumTermBalance(minimunTermBalance);
+
+
+    myPromise.then(function(result) {
+
+        var response_object={results:result}
+        response.send(response_object);
+    }, function(err) {
+        response.send("An error occurred");
+        console.log(err);
+    })
+
+});
+
+
+
+
+router.post('/get_all_students_in_a_class_with_minimum_term_balance',urlencodedParser,function(request,response){
+
+    var classId=request.body.classId;
+    var minimunTermBalance=request.body.minimunTermBalance;
+
+    var myPromise = FeeController.getAllStudentsInAClassWithAMinimumTermBalance(classId,minimunTermBalance);
+
+
+    myPromise.then(function(result) {
+
+        var response_object={results:result}
+        response.send(response_object);
+    }, function(err) {
+        response.send("An error occurred");
+        console.log(err);
+    })
+
+});
 
  
  

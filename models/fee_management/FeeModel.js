@@ -8,7 +8,7 @@ functions.
 */
 
 const ModelMaster = require("../ModelMaster.js");
-const TableName = "fee";
+const TableName = "fee_statements";
 
 module.exports = class FeeModel {
   constructor() {}
@@ -156,4 +156,36 @@ module.exports = class FeeModel {
       );
     });
   }
+
+
+  static getAllStudentsWithAMinimumTermBalance(minimunTermBalance) {
+    return new Promise(function(resolve, reject) {
+      var myPromise = ModelMaster.getAllStudentsWithAMinimumTermBalance(minimunTermBalance);
+      myPromise.then(
+          function(result) {
+            resolve(result);
+          },
+          function(err) {
+            reject(err);
+          }
+      );
+    });
+  }
+
+
+  static getAllStudentsInAClassWithAMinimumTermBalance(classId,minimunTermBalance) {
+    return new Promise(function(resolve, reject) {
+      var myPromise = ModelMaster.getAllStudentsInAClassWithAMinimumTermBalance(classId,minimunTermBalance);
+      myPromise.then(
+          function(result) {
+            resolve(result);
+          },
+          function(err) {
+            reject(err);
+          }
+      );
+    });
+  }
+  
+  
 };

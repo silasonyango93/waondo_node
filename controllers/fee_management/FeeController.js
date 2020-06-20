@@ -174,9 +174,42 @@ module.exports = class FeeController{
            })
 		   
 	 })
-    }	
-	
-	
-	
-	
+    }
+
+
+    static getAllStudentsWithAMinimumTermBalance(minimunTermBalance){
+        return new Promise(function(resolve, reject) {
+
+
+            var myPromise = FeeModel.getAllStudentsWithAMinimumTermBalance(minimunTermBalance);
+
+
+            myPromise.then(function(result) {
+
+                resolve(result);
+            }, function(err) {
+                reject(err);
+            })
+
+        })
+    }
+
+
+    static getAllStudentsInAClassWithAMinimumTermBalance(classId,minimunTermBalance){
+        return new Promise(function(resolve, reject) {
+
+
+            var myPromise = FeeModel.getAllStudentsInAClassWithAMinimumTermBalance(classId,minimunTermBalance);
+
+
+            myPromise.then(function(result) {
+
+                resolve(result);
+            }, function(err) {
+                reject(err);
+            })
+
+        })
+    }
+
 }
