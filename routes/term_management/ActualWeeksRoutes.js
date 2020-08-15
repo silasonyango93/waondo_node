@@ -243,4 +243,26 @@ router.post("/get_a_years_weeks", urlencodedParser, function(
   );
 });
 
+
+
+router.post("/get_the_current_week", urlencodedParser, function(
+    request,
+    response
+) {
+  var todaysDate = request.body.todaysDate;
+
+  var myPromise = ActualWeeksController.getTheCurrentActualWeek(todaysDate);
+
+  myPromise.then(
+      function(result) {
+        var response_object = { results: result };
+        response.send(response_object);
+      },
+      function(err) {
+        response.send("An error occurred");
+        console.log(err);
+      }
+  );
+});
+
 module.exports = router;

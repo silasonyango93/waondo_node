@@ -1807,5 +1807,20 @@ and two grandchildren(Tables five and six) from one child(TableFour)
     });
   }
 
+  static getTheCurrentActualWeek(todaysDate) {
+    return new Promise(function(resolve, reject) {
+      con.query(
+          "SELECT * FROM week_iterations INNER JOIN actual_weeks ON week_iterations.WeekIterationId = actual_weeks.WeekIterationId WHERE " +todaysDate+ " BETWEEN WeekStartDate AND WeekEndDate;",
+          function(err, result) {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(result);
+            }
+          }
+      );
+    });
+  }
+
 
 };

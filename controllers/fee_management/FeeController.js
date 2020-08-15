@@ -38,27 +38,32 @@ module.exports = class FeeController{
 	
 	
 	
-   static get_all_records(){
-	   return new Promise(function(resolve, reject) {  
-        
-        var myPromise = FeeModel.get_all_records();
-		   
-		   
-		   myPromise.then(function(result) {
-        
-           resolve(result);
-           }, function(err) {
-           reject(err);
-           })
-		   
-	 })
-    }		
-	
-	
-	
-	
-	
-   static get_specific_records(ColumnName,value_){
+   // static get_all_records(){
+	//    return new Promise(function(resolve, reject) {
+   //
+   //      var myPromise = FeeModel.get_all_records();
+	//
+	//
+	// 	   myPromise.then(function(result) {
+   //
+   //         resolve(result);
+   //         }, function(err) {
+   //         reject(err);
+   //         })
+	//
+	//  })
+   //  }
+
+    static async get_all_records() {
+        var result = await FeeModel.get_all_records();
+        return result;
+    }
+
+
+
+
+
+    static get_specific_records(ColumnName,value_){
 	   return new Promise(function(resolve, reject) {  
         
         var myPromise = FeeModel.get_specific_records(ColumnName,value_);

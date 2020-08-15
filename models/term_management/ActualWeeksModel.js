@@ -170,5 +170,20 @@ module.exports = class ActualWeeksModel {
       );
     });
   }
+
+
+  static getTheCurrentActualWeek(todaysDate) {
+    return new Promise(function(resolve, reject) {
+      var myPromise = ModelMaster.getTheCurrentActualWeek(todaysDate);
+      myPromise.then(
+          function(result) {
+            resolve(result);
+          },
+          function(err) {
+            reject(err);
+          }
+      );
+    });
+  }
   
 };
