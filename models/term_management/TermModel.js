@@ -195,5 +195,21 @@ module.exports = class TermModel {
       );
     });
   }
+
+
+
+  static getTermDetailsByTermId(termId) {
+    return new Promise(function(resolve, reject) {
+      var myPromise = ModelMaster.getTermDetailsByTermId(termId);
+      myPromise.then(
+          function(result) {
+            resolve(result);
+          },
+          function(err) {
+            reject(err);
+          }
+      );
+    });
+  }
   
 };

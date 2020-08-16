@@ -193,5 +193,21 @@ module.exports = class TermController {
       );
     });
   }
+
+
+  static getTermDetailsByTermId(termId) {
+    return new Promise(function(resolve, reject) {
+      var myPromise = TermModel.getTermDetailsByTermId(termId);
+
+      myPromise.then(
+          function(result) {
+            resolve(result);
+          },
+          function(err) {
+            reject(err);
+          }
+      );
+    });
+  }
   
 };

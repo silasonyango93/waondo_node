@@ -1822,5 +1822,20 @@ and two grandchildren(Tables five and six) from one child(TableFour)
     });
   }
 
+  static getTermDetailsByTermId(termId) {
+    return new Promise(function(resolve, reject) {
+      con.query(
+          "SELECT * FROM term_iterations INNER JOIN actual_terms ON term_iterations.TermIterationId = actual_terms.TermIterationId WHERE actual_terms.TermId = ?;",termId,
+          function(err, result) {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(result);
+            }
+          }
+      );
+    });
+  }
+
 
 };

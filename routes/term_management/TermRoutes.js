@@ -266,4 +266,28 @@ router.post("/get_term_by_date", urlencodedParser, function(
   );
 });
 
+
+
+
+router.post("/get_term_by_term_id", urlencodedParser, function(
+    request,
+    response
+) {
+
+  var termId = request.body.termId;
+
+  var myPromise = TermController.getTermDetailsByTermId(termId);
+
+  myPromise.then(
+      function(result) {
+        var response_object = { results: result };
+        response.send(response_object);
+      },
+      function(err) {
+        response.send("An error occurred");
+        console.log(err);
+      }
+  );
+});
+
 module.exports = router;

@@ -143,7 +143,7 @@
       <workItem from="1592297094855" duration="685000" />
       <workItem from="1592577082078" duration="9381000" />
       <workItem from="1593019124914" duration="933000" />
-      <workItem from="1597430561787" duration="1770000" />
+      <workItem from="1597430561787" duration="2317000" />
     </task>
     <servers />
   </component>
@@ -177,12 +177,6 @@
           <line>176</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/models/ModelMaster.js</url>
-          <line>1817</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
