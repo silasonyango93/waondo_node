@@ -160,4 +160,20 @@ module.exports = class ClassFeeStructureComponentsController {
       );
     });
   }
+  
+  static retrieveFeeComponentOfAClassFeeStructure(classFeeStructureId) {
+    return new Promise(function(resolve, reject) {
+      var myPromise = ClassFeeStructureComponentsModel.retrieveFeeComponentOfAClassFeeStructure(classFeeStructureId);
+
+      myPromise.then(
+          function(result) {
+            resolve(result);
+          },
+          function(err) {
+            reject(err);
+          }
+      );
+    });
+  }
+  
 };

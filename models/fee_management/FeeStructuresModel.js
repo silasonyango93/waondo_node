@@ -156,4 +156,20 @@ module.exports = class FeeStructuresModel {
       );
     });
   }
+
+
+  static retrieveClassFeeStructuresFromFeeStructureId(feeStructureId) {
+    return new Promise(function(resolve, reject) {
+      var myPromise = ModelMaster.retrieveClassFeeStructuresFromFeeStructureId(feeStructureId);
+      myPromise.then(
+          function(result) {
+            resolve(result);
+          },
+          function(err) {
+            reject(err);
+          }
+      );
+    });
+  }
+  
 };

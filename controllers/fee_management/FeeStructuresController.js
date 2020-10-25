@@ -158,4 +158,20 @@ module.exports = class FeeStructuresController {
       );
     });
   }
+
+  static retrieveClassFeeStructuresFromFeeStructureId(feeStructureId) {
+    return new Promise(function(resolve, reject) {
+      var myPromise = FeeStructuresModel.retrieveClassFeeStructuresFromFeeStructureId(feeStructureId);
+
+      myPromise.then(
+          function(result) {
+            resolve(result);
+          },
+          function(err) {
+            reject(err);
+          }
+      );
+    });
+  }
+  
 };

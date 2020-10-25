@@ -202,4 +202,20 @@ module.exports = class ClassFeeStructureBreakdownController {
       );
     });
   }
+
+
+  static retrieveFeeBreakDownOfAClassFeeStructure(classFeeStructureId) {
+    return new Promise(function(resolve, reject) {
+      var myPromise = ClassFeeStructureBreakdownModel.retrieveFeeBreakDownOfAClassFeeStructure(classFeeStructureId);
+
+      myPromise.then(
+          function(result) {
+            resolve(result);
+          },
+          function(err) {
+            reject(err);
+          }
+      );
+    });
+  }
 };

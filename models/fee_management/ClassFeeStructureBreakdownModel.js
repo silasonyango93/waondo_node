@@ -198,4 +198,19 @@ module.exports = class ClassFeeStructureBreakdownModel {
       );
     });
   }
+
+
+  static retrieveFeeBreakDownOfAClassFeeStructure(classFeeStructureId) {
+    return new Promise(function(resolve, reject) {
+      var myPromise = ModelMaster.retrieveFeeBreakDownOfAClassFeeStructure(classFeeStructureId);
+      myPromise.then(
+          function(result) {
+            resolve(result);
+          },
+          function(err) {
+            reject(err);
+          }
+      );
+    });
+  }
 };

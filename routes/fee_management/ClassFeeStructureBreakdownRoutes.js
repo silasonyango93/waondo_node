@@ -286,4 +286,27 @@ router.post(
   }
 );
 
+
+
+router.post(
+    "/retrieve_fee_breakdown_of_particular_class_fee_structure",
+    urlencodedParser,
+    function(request, response) {
+        var classFeeStructureId = request.body.classFeeStructureId;
+
+        var myPromise = ClassFeeStructureBreakdownController.retrieveFeeBreakDownOfAClassFeeStructure(classFeeStructureId);
+
+        myPromise.then(
+            function(result) {
+                var response_object = { results: result };
+                response.send(response_object);
+            },
+            function(err) {
+                response.send("An error occurred");
+                console.log(err);
+            }
+        );
+    }
+);
+
 module.exports = router;

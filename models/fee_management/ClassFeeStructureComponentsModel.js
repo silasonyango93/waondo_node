@@ -156,4 +156,19 @@ module.exports = class ClassFeeStructureComponentsModel {
       );
     });
   }
+
+
+  static retrieveFeeComponentOfAClassFeeStructure(classFeeStructureId) {
+    return new Promise(function(resolve, reject) {
+      var myPromise = ModelMaster.retrieveFeeComponentOfAClassFeeStructure(classFeeStructureId);
+      myPromise.then(
+          function(result) {
+            resolve(result);
+          },
+          function(err) {
+            reject(err);
+          }
+      );
+    });
+  }
 };

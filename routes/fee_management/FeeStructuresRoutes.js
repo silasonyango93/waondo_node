@@ -232,4 +232,27 @@ router.post("/fee_structures_user_specific_query", urlencodedParser, function(
 });
 
 
+
+router.post("/get_class_fee_structures_of_a_fee_structure", urlencodedParser, function(
+    request,
+    response
+) {
+  var feeStructureId = request.body.feeStructureId;
+
+  var myPromise = FeeStructuresController.retrieveClassFeeStructuresFromFeeStructureId(feeStructureId);
+
+  myPromise.then(
+      function(result) {
+        response.send(result);
+      },
+      function(err) {
+        response.send("An error occurred");
+        console.log(err);
+      }
+  );
+});
+
+
+
+
 module.exports = router;

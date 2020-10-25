@@ -1838,4 +1838,55 @@ and two grandchildren(Tables five and six) from one child(TableFour)
   }
 
 
+  static retrieveClassFeeStructuresFromFeeStructureId(feeStructureId) {
+    return new Promise(function(resolve, reject) {
+      con.query(
+          "SELECT * FROM fee_structures INNER JOIN class_fee_structures ON fee_structures.FeeStructureId = class_fee_structures.FeeStructureId INNER JOIN academic_class_levels ON class_fee_structures.AcademicClassLevelId = academic_class_levels.AcademicClassLevelId WHERE fee_structures.FeeStructureId = " +
+          mysql.escape(feeStructureId),
+          function(err, result) {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(result);
+            }
+          }
+      );
+    });
+  }
+
+
+  static retrieveFeeBreakDownOfAClassFeeStructure(classFeeStructureId) {
+    return new Promise(function(resolve, reject) {
+      con.query(
+          "SELECT * FROM class_fee_structure_breakdown INNER JOIN student_residence ON student_residence.StudentResidenceId = class_fee_structure_breakdown.StudentResidenceId INNER JOIN term_iterations ON class_fee_structure_breakdown.TermIterationId = term_iterations.TermIterationId WHERE class_fee_structure_breakdown.ClassFeeStructureId = " +
+          mysql.escape(classFeeStructureId),
+          function(err, result) {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(result);
+            }
+          }
+      );
+    });
+  }
+
+
+  static retrieveFeeComponentOfAClassFeeStructure(classFeeStructureId) {
+    return new Promise(function(resolve, reject) {
+      con.query(
+          "SELECT * FROM class_fee_structure_components INNER JOIN fee_components ON class_fee_structure_components.FeeComponentId = fee_components.FeeComponentId WHERE class_fee_structure_components.ClassFeeStructureId = " +
+          mysql.escape(classFeeStructureId),
+          function(err, result) {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(result);
+            }
+          }
+      );
+    });
+  }
+
+
 };
