@@ -246,8 +246,7 @@ router.post(
 
         myPromise.then(
             function(result) {
-                var response_object = { results: result };
-                response.send(response_object);
+                response.send(result);
             },
             function(err) {
                 response.send("An error occurred");
