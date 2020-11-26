@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c7421812-75c3-4c93-8258-122a1b8bed28" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -147,7 +150,12 @@
       <workItem from="1597848946479" duration="563000" />
       <workItem from="1602613811774" duration="1021000" />
       <workItem from="1603301750284" duration="273000" />
-      <workItem from="1603617428053" duration="5471000" />
+      <workItem from="1603617428053" duration="6218000" />
+      <workItem from="1604228672794" duration="489000" />
+      <workItem from="1605095408090" duration="284000" />
+      <workItem from="1606377422095" duration="310000" />
+      <workItem from="1606401819658" duration="13000" />
+      <workItem from="1606406843019" duration="891000" />
     </task>
     <servers />
   </component>
