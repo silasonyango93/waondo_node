@@ -4,4 +4,4 @@ orbs:
 workflows:
   node-tests:
     jobs:
-      - mocha
+      - node/test
