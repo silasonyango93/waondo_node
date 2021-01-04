@@ -184,5 +184,19 @@ module.exports = class ClassModel {
       );
     });
   }
+
+  static getAnActualClassByClassLevelAndStreamName(academicClassLevelId,streamName) {
+    return new Promise(function(resolve, reject) {
+      var myPromise = ModelMaster.getAnActualClassByClassLevelAndStreamName(academicClassLevelId,streamName);
+      myPromise.then(
+          function(result) {
+            resolve(result);
+          },
+          function(err) {
+            reject(err);
+          }
+      );
+    });
+  }
   
 };

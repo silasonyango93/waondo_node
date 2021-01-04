@@ -264,4 +264,27 @@ router.post(
 );
 
 
+router.post(
+    "/retrieve_class_by_level_id_and_stream_name",
+    urlencodedParser,
+    function(request, response) {
+
+        var academicClassLevelId = request.body.academicClassLevelId;
+        var streamName = request.body.streamName;
+
+        var myPromise = ClassController.getAnActualClassByClassLevelAndStreamName(academicClassLevelId,streamName);
+
+        myPromise.then(
+            function(result) {
+                response.send(result[0]);
+            },
+            function(err) {
+                response.send("An error occurred");
+                console.log(err);
+            }
+        );
+    }
+);
+
+
 module.exports = router;

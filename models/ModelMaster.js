@@ -1888,5 +1888,20 @@ and two grandchildren(Tables five and six) from one child(TableFour)
     });
   }
 
+  static getAnActualClassByClassLevelAndStreamName(academicClassLevelId,streamName) {
+    return new Promise(function(resolve, reject) {
+      con.query(
+          "SELECT * FROM classes INNER JOIN lots ON classes.LotId = lots.LotId INNER JOIN academic_class_levels ON lots.AcademicClassLevelId = academic_class_levels.AcademicClassLevelId INNER JOIN lot_descriptions ON lots.LotDescriptionId = lot_descriptions.LotDescriptionId INNER JOIN class_streams ON classes.ClassStreamId = class_streams.ClassStreamId WHERE academic_class_levels.AcademicClassLevelId = "+academicClassLevelId+" AND class_streams.ClassStreamName LIKE '%"+streamName+"%';",
+          function(err, result) {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(result);
+            }
+          }
+      );
+    });
+  }
+
 
 };

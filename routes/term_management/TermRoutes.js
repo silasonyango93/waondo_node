@@ -21,7 +21,7 @@ router.post("/add_term", urlencodedParser, function(request, response) {
     TermIterationId: request.body.TermIterationId,
     TermStartDate: request.body.TermStartDate,
     TermEndDate: request.body.TermEndDate,
-    Year: request.body.Year
+    Year: new Date().getFullYear()
   };
 
   var myPromise = TermController.insert(jsonObject_);

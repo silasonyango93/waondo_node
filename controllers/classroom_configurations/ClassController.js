@@ -182,5 +182,20 @@ module.exports = class ClassController {
       );
     });
   }
+
+  static getAnActualClassByClassLevelAndStreamName(academicClassLevelId,streamName) {
+    return new Promise(function(resolve, reject) {
+      var myPromise = ClassModel.getAnActualClassByClassLevelAndStreamName(academicClassLevelId,streamName);
+
+      myPromise.then(
+          function(result) {
+            resolve(result);
+          },
+          function(err) {
+            reject(err);
+          }
+      );
+    });
+  }
   
 };
