@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c7421812-75c3-4c93-8258-122a1b8bed28" name="Default Changelist" comment="8990">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/classroom_configurations/ClassController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/classroom_configurations/ClassController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/ModelMaster.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/ModelMaster.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/classroom_configurations/ClassModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/classroom_configurations/ClassModel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/classroom_configurations/ClassRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/classroom_configurations/ClassRoutes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/term_management/TermRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/term_management/TermRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -174,6 +170,7 @@
       <workItem from="1609692209975" duration="523000" />
       <workItem from="1609765759772" duration="2442000" />
       <workItem from="1609798886029" duration="9000" />
+      <workItem from="1609828478920" duration="5108000" />
     </task>
     <servers />
   </component>
