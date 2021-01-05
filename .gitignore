@@ -12,3 +12,5 @@ dbcredentials.js
 # Docker
 Dockerfile
 docker-compose.yml
+index.js
+common/dbConnect.js
