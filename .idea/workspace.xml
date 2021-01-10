@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c7421812-75c3-4c93-8258-122a1b8bed28" name="Default Changelist" comment="8990">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/dbConnect.js" beforeDir="false" afterPath="$PROJECT_DIR$/common/dbConnect.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/k8s/uat/ingress.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/uat/ingress.yaml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -176,7 +174,8 @@
       <workItem from="1609863223309" duration="546000" />
       <workItem from="1609930956339" duration="1349000" />
       <workItem from="1610041462874" duration="767000" />
-      <workItem from="1610273248394" duration="1956000" />
+      <workItem from="1610273248394" duration="2743000" />
+      <workItem from="1610317150477" duration="204000" />
     </task>
     <servers />
   </component>
