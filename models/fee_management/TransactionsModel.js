@@ -156,4 +156,32 @@ module.exports = class TransactionsModel {
             );
         });
     }
+
+    static fetchTransactionsByDate(transactionDate) {
+        return new Promise(function(resolve, reject) {
+            var myPromise = ModelMaster.fetchTransactionsByDate(transactionDate);
+            myPromise.then(
+                function(result) {
+                    resolve(result);
+                },
+                function(err) {
+                    reject(err);
+                }
+            );
+        });
+    }
+
+    static fetchTransactionsByDateRange(transactionStartDate,transactionEndDate) {
+        return new Promise(function(resolve, reject) {
+            var myPromise = ModelMaster.fetchTransactionsByDateRange(transactionStartDate,transactionEndDate);
+            myPromise.then(
+                function(result) {
+                    resolve(result);
+                },
+                function(err) {
+                    reject(err);
+                }
+            );
+        });
+    }
 };

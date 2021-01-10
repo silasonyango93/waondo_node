@@ -1904,4 +1904,37 @@ and two grandchildren(Tables five and six) from one child(TableFour)
   }
 
 
+
+  static fetchTransactionsByDate(transactionDate) {
+    return new Promise(function(resolve, reject) {
+      con.query(
+          "SELECT * FROM transactions INNER JOIN transaction_descriptions td on transactions.TransactionDescriptionId = td.TransactionDescriptionId INNER JOIN session_logs sl on transactions.SessionLogId = sl.SessionLogId INNER JOIN users u on sl.UserId = u.UserId INNER JOIN students s on transactions.StudentId = s.StudentId INNER JOIN installments i on transactions.InstallmentId = i.InstallmentId INNER JOIN carry_forwards cf on transactions.CarryFowardId = cf.CarryFowardId INNER JOIN fee_corrections fc on transactions.FeeCorrectionId = fc.FeeCorrectionId WHERE DATE_FORMAT(TransactionDate, '%Y-%m-%d') = DATE_FORMAT('"+transactionDate+"', '%Y-%m-%d') ORDER BY DATE_FORMAT(TransactionDate, '%Y-%m-%d')  DESC;",
+          function(err, result) {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(result);
+            }
+          }
+      );
+    });
+  }
+
+
+  static fetchTransactionsByDateRange(transactionStartDate,transactionEndDate) {
+    return new Promise(function(resolve, reject) {
+      con.query(
+          "SELECT * FROM transactions INNER JOIN transaction_descriptions td on transactions.TransactionDescriptionId = td.TransactionDescriptionId INNER JOIN session_logs sl on transactions.SessionLogId = sl.SessionLogId INNER JOIN users u on sl.UserId = u.UserId INNER JOIN students s on transactions.StudentId = s.StudentId INNER JOIN installments i on transactions.InstallmentId = i.InstallmentId INNER JOIN carry_forwards cf on transactions.CarryFowardId = cf.CarryFowardId INNER JOIN fee_corrections fc on transactions.FeeCorrectionId = fc.FeeCorrectionId WHERE DATE_FORMAT(TransactionDate, '%Y-%m-%d') BETWEEN DATE_FORMAT('" +transactionStartDate+ "', '%Y-%m-%d') AND DATE_FORMAT('" +transactionEndDate+ "', '%Y-%m-%d') ORDER BY DATE_FORMAT(TransactionDate, '%Y-%m-%d')  DESC",
+          function(err, result) {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(result);
+            }
+          }
+      );
+    });
+  }
+
+
 };

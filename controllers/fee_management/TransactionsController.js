@@ -177,6 +177,31 @@ module.exports = class TransactionsController{
     }
 
 
+    static fetchTransactionsByDate(transactionDate){
+        return new Promise(function(resolve, reject) {
+            var myPromise = TransactionsModel.fetchTransactionsByDate(transactionDate);
+            myPromise.then(function(result) {
+
+                resolve(result);
+            }, function(err) {
+                reject(err);
+            })
+
+        })
+    }
+
+    static fetchTransactionsByDateRange(transactionStartDate,transactionEndDate){
+        return new Promise(function(resolve, reject) {
+            var myPromise = TransactionsModel.fetchTransactionsByDateRange(transactionStartDate,transactionEndDate);
+            myPromise.then(function(result) {
+
+                resolve(result);
+            }, function(err) {
+                reject(err);
+            })
+
+        })
+    }
 
 
 }

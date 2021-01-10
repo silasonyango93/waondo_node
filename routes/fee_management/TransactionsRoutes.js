@@ -271,7 +271,35 @@ router.post('/transactions_user_specific_query',urlencodedParser,function(reques
 });
 
 
+router.post('/fetch_transactions_by_date',urlencodedParser,function(request,response){
 
+    var transactionDate=request.body.transactionDate;
+    var myPromise = TransactionsController.fetchTransactionsByDate(transactionDate);
+    myPromise.then(function(result) {
+        response.send(result);
+    }, function(err) {
+        response.send("An error occurred");
+        console.log(err);
+    })
+
+});
+
+
+
+
+router.post('/fetch_transactions_by_date_range',urlencodedParser,function(request,response){
+
+    var transactionStartDate=request.body.transactionStartDate;
+    var transactionEndDate=request.body.transactionEndDate;
+    var myPromise = TransactionsController.fetchTransactionsByDateRange(transactionStartDate,transactionEndDate);
+    myPromise.then(function(result) {
+        response.send(result);
+    }, function(err) {
+        response.send("An error occurred");
+        console.log(err);
+    })
+
+});
 
 
 
