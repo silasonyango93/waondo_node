@@ -1937,4 +1937,20 @@ and two grandchildren(Tables five and six) from one child(TableFour)
   }
 
 
+  static fetchAllStudentsNotCompletedSchool() {
+    return new Promise(function(resolve, reject) {
+      con.query(
+          "SELECT * FROM students INNER JOIN classes c on students.ClassId = c.ClassId INNER JOIN lots l on c.LotId = l.LotId WHERE l.hasCompletedSchool = 0 AND students.IsAnAdminStudent = 0",
+          function(err, result) {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(result);
+            }
+          }
+      );
+    });
+  }
+
+
 };

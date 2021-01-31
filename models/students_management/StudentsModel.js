@@ -170,5 +170,19 @@ module.exports = class StudentsModel {
       );
     });
   }
+
+  static fetchAllStudentsNotCompletedSchool() {
+    return new Promise(function(resolve, reject) {
+      var myPromise = ModelMaster.fetchAllStudentsNotCompletedSchool();
+      myPromise.then(
+          function(result) {
+            resolve(result);
+          },
+          function(err) {
+            reject(err);
+          }
+      );
+    });
+  }
   
 };

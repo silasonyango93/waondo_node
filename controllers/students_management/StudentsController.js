@@ -173,5 +173,21 @@ module.exports = class StudentsController {
             );
         });
     }
+
+
+    static fetchAllStudentsNotCompletedSchool() {
+        return new Promise(function(resolve, reject) {
+            var myPromise = StudentsModel.fetchAllStudentsNotCompletedSchool();
+
+            myPromise.then(
+                function(result) {
+                    resolve(result);
+                },
+                function(err) {
+                    reject(err);
+                }
+            );
+        });
+    }
     
 };

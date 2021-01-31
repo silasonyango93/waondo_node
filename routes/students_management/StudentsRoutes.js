@@ -255,4 +255,24 @@ router.post("/get_a_student_residence_details", urlencodedParser, function(
 });
 
 
+router.post("/get_all_students_not_completed_school", urlencodedParser, function(
+    request,
+    response
+) {
+
+
+  var myPromise = StudentsController.fetchAllStudentsNotCompletedSchool()
+
+  myPromise.then(
+      function(result) {
+        response.send(result);
+      },
+      function(err) {
+        response.send("An error occurred");
+        console.log(err);
+      }
+  );
+});
+
+
 module.exports = router;
