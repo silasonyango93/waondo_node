@@ -1663,7 +1663,7 @@ and two grandchildren(Tables five and six) from one child(TableFour)
   ) {
     return new Promise(function(resolve, reject) {
       con.query(
-        "SELECT * FROM fee_structures INNER JOIN class_fee_structures ON fee_structures.FeeStructureId = class_fee_structures.FeeStructureId INNER JOIN class_fee_structure_breakdown ON class_fee_structures.ClassFeeStructureId = class_fee_structure_breakdown.ClassFeeStructureId WHERE fee_structures.IsCurrentFeeStructure = 1 AND class_fee_structures.AcademicClassLevelId = " +
+        "SELECT * FROM fee_structures INNER JOIN class_fee_structures ON fee_structures.FeeStructureId = class_fee_structures.FeeStructureId INNER JOIN class_fee_structure_breakdown ON class_fee_structures.ClassFeeStructureId = class_fee_structure_breakdown.ClassFeeStructureId INNER JOIN term_iterations ON class_fee_structure_breakdown.TermIterationId = term_iterations.TermIterationId WHERE fee_structures.IsCurrentFeeStructure = 1 AND class_fee_structures.AcademicClassLevelId = " +
           academicClassLevelId +
           " AND class_fee_structure_breakdown.StudentResidenceId = " +
           studentResidenceId +
