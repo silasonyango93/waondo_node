@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   namespace: uat
@@ -8,15 +8,18 @@ metadata:
 #    certmanager.k8s.io/cluster-issuer: "letsencrypt-staging"
 spec:
   rules:
-    - host: node.waondosecondary.xyz
+    - host: waondonode.livelihoodzone.xyz
       http:
         paths:
           - path: /
+            pathType: ImplementationSpecific
             backend:
-              serviceName: waondo-backend
-              servicePort: 8080
+              service:
+                name: waondo-backend
+                port:
+                  number: 8080
 ---
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   namespace: uat
@@ -26,10 +29,13 @@ metadata:
 #    certmanager.k8s.io/cluster-issuer: "letsencrypt-staging"
 spec:
   rules:
-    - host: pma.waondosecondary.xyz
+    - host: pma.livelihoodzone.xyz
       http:
         paths:
           - path: /
+            pathType: ImplementationSpecific
             backend:
-              serviceName: pma
-              servicePort: 80
+              service:
+                name: pma
+                port:
+                  number: 80
