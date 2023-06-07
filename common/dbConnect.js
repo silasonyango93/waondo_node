@@ -4,8 +4,8 @@ var dbcredentials;
 
 const con = mysql.createPool({
     host: "mysql-db",
-    user: "silas",
-    password: "8032",
+    user: "root",
+    password: "root",
     database: "waondo",
     insecureAuth: true
 });

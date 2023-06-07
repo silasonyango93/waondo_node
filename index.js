@@ -19,9 +19,9 @@ var port = process.env.PORT || 5000;
 
 app.use(cors());
 dbcredentials = {
-  host: "localhost",
-  user: "silas",
-  password: "8032",
+  host: "mysql-db",
+  user: "root",
+  password: "root",
   database: "waondo",
   insecureAuth: true
 };
