@@ -8,7 +8,7 @@ metadata:
 #    certmanager.k8s.io/cluster-issuer: "letsencrypt-staging"
 spec:
   rules:
-    - host: waondonode.livelihoodzone.xyz
+    - host: waondonode.waondosecondary.xyz
       http:
         paths:
           - path: /
@@ -29,7 +29,7 @@ metadata:
 #    certmanager.k8s.io/cluster-issuer: "letsencrypt-staging"
 spec:
   rules:
-    - host: pma.livelihoodzone.xyz
+    - host: pma.waondosecondary.xyz
       http:
         paths:
           - path: /
