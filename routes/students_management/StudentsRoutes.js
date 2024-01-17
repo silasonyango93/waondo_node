@@ -36,6 +36,7 @@ router.post("/add_students", urlencodedParser, function(request, response) {
   myPromise.then(
     function(result) {
       var response_object = { results: result };
+      console.log(result)
       response.send(response_object);
     },
     function(err) {
@@ -51,6 +52,7 @@ router.post("/get_all_students", urlencodedParser, function(request, response) {
   myPromise.then(
     function(result) {
       var response_object = { results: result };
+      console.log(result)
       response.send(response_object);
     },
     function(err) {
@@ -73,6 +75,7 @@ router.post("/get_specific_students", urlencodedParser, function(
   myPromise.then(
     function(result) {
       var response_object = { results: result };
+      console.log(result)
       response.send(response_object);
     },
     function(err) {
@@ -100,6 +103,7 @@ router.post("/update_students", urlencodedParser, function(request, response) {
   myPromise.then(
     function(result) {
       var response_object = { results: result };
+      console.log(result)
       response.send(response_object);
     },
     function(err) {
@@ -137,6 +141,7 @@ router.post("/update_individual_students", urlencodedParser, function(
   myPromise.then(
     function(result) {
       var response_object = { results: result };
+      console.log(result)
       response.send(response_object);
     },
     function(err) {
@@ -168,6 +173,7 @@ router.post("/delete_individual_students", urlencodedParser, function(
   myPromise.then(
     function(result) {
       var response_object = { results: result };
+      console.log(result)
       response.send(response_object);
     },
     function(err) {
@@ -190,6 +196,7 @@ router.post("/get_number_of_students_records", urlencodedParser, function(
   myPromise.then(
     function(result) {
       var response_object = { results: result };
+      console.log(result)
       response.send(response_object);
     },
     function(err) {
@@ -221,6 +228,7 @@ router.post("/students_user_specific_query", urlencodedParser, function(
   myPromise.then(
     function(result) {
       var response_object = { results: result };
+      console.log(result)
       response.send(response_object);
     },
     function(err) {
@@ -265,6 +273,7 @@ router.post("/get_all_students_not_completed_school", urlencodedParser, function
 
   myPromise.then(
       function(result) {
+        console.log(result)
         response.send(result);
       },
       function(err) {

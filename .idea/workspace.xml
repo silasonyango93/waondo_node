@@ -5,10 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c7421812-75c3-4c93-8258-122a1b8bed28" name="Default Changelist" comment="8990">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/k8s/uat/ingress.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/uat/ingress.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/k8s/uat/mysql-pvc.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/uat/mysql-pvc.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/k8s/uat/uploads-pvc.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/uat/uploads-pvc.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/fee_management/FeeRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/fee_management/FeeRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/fee_management/InstallmentsRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/fee_management/InstallmentsRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/students_management/StudentRegistrationRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/students_management/StudentRegistrationRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/students_management/StudentTypesRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/students_management/StudentTypesRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/students_management/StudentsRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/students_management/StudentsRoutes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,49 +23,50 @@
       <list>
         <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="Dockerfile" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="KubernetesApiProvider"><![CDATA[{
-  "contexts": [
+  <component name="KubernetesApiProvider">{
+  &quot;contexts&quot;: [
     {
-      "name": "gke_waondo-secondary_us-central1-a_waondo-cluster"
+      &quot;name&quot;: &quot;gke_waondo-secondary_us-central1-a_waondo-cluster&quot;
     }
   ],
-  "isMigrated": true
-}]]></component>
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="KubernetesSettings">
     <option name="contextName" value="gke_waondo-secondary_us-central1-a_waondo-cluster" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="1TbDFuvOUSoTbtnpATY2c11dOO9" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "/Users/silas.onyango/Desktop/personal-projects/waondo/waondo_node",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/silas.onyango/Desktop/personal-projects/waondo/waondo_node&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Node.js.index.js">
     <configuration name="index.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/index.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
@@ -200,7 +204,10 @@
       <workItem from="1686154786148" duration="2697000" />
       <workItem from="1686174025043" duration="6000" />
       <workItem from="1686174486753" duration="643000" />
-      <workItem from="1704857842914" duration="4611000" />
+      <workItem from="1704857842914" duration="4993000" />
+      <workItem from="1704958842530" duration="670000" />
+      <workItem from="1704968260941" duration="4402000" />
+      <workItem from="1705466003412" duration="473000" />
     </task>
     <servers />
   </component>

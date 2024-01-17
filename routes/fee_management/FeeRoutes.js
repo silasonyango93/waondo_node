@@ -51,7 +51,7 @@ router.use(function timeLog(req, res, next) {
 	          
 		   
 		   myPromise.then(function(result) {
-        
+               console.log(result)
            var response_object={results:result}
            response.send(response_object);
            }, function(err) {
@@ -74,6 +74,7 @@ router.use(function timeLog(req, res, next) {
 		   myPromise.then(function(result) {
         
            var response_object={results:result}
+               console.log(result)
            response.send(response_object);
            }, function(err) {
 			   console.log(err);
@@ -103,6 +104,7 @@ router.use(function timeLog(req, res, next) {
 		   
 		   myPromise.then(function(result) {
            var response_object={results:result}
+               console.log(result)
            response.send(response_object);
            }, function(err) {
            response.send("An error occurred");
@@ -154,6 +156,7 @@ router.use(function timeLog(req, res, next) {
 		   myPromise.then(function(result) {
         
            var response_object={results:result}
+               console.log(result)
            response.send(response_object);
            }, function(err) {
            response.send("An error occurred");
@@ -201,6 +204,7 @@ router.use(function timeLog(req, res, next) {
 		   myPromise.then(function(result) {
         
            var response_object={results:result}
+               console.log(result)
            response.send(response_object);
            }, function(err) {
            response.send("An error occurred");
@@ -231,6 +235,7 @@ router.use(function timeLog(req, res, next) {
 		   myPromise.then(function(result) {
         
            var response_object={results:result}
+               console.log(result)
            response.send(response_object);
            }, function(err) {
            response.send("An error occurred");
@@ -258,6 +263,7 @@ router.use(function timeLog(req, res, next) {
 		   myPromise.then(function(result) {
         
            var response_object={results:result}
+               console.log(result)
            response.send(response_object);
            }, function(err) {
            response.send("An error occurred");
@@ -290,6 +296,7 @@ router.post('/fee_user_specific_query',urlencodedParser,function(request,respons
 		   myPromise.then(function(result) {
         
            var response_object={results:result}
+               console.log(result)
            response.send(response_object);
            }, function(err) {
            response.send("An error occurred");
@@ -310,6 +317,7 @@ router.post('/get_all_students_with_minimum_term_balance',urlencodedParser,funct
     myPromise.then(function(result) {
 
         var response_object={results:result}
+        console.log(result)
         response.send(response_object);
     }, function(err) {
         response.send("An error occurred");
@@ -332,6 +340,7 @@ router.post('/get_all_students_in_a_class_with_minimum_term_balance',urlencodedP
     myPromise.then(function(result) {
 
         var response_object={results:result}
+        console.log(result)
         response.send(response_object);
     }, function(err) {
         response.send("An error occurred");

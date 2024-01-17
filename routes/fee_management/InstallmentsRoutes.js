@@ -31,6 +31,7 @@ router.post("/add_installments", urlencodedParser, function(request, response) {
   myPromise.then(
     function(result) {
       var response_object = { results: result };
+      console.log(result)
       response.send(response_object);
     },
     function(err) {
@@ -49,6 +50,7 @@ router.post("/get_all_installments", urlencodedParser, function(
   myPromise.then(
     function(result) {
       var response_object = { results: result };
+      console.log(result)
       response.send(response_object);
     },
     function(err) {
@@ -71,6 +73,7 @@ router.post("/get_specific_installments", urlencodedParser, function(
   myPromise.then(
     function(result) {
       var response_object = { results: result };
+      console.log(result)
       response.send(response_object);
     },
     function(err) {
@@ -95,6 +98,7 @@ router.post("/update_installments", urlencodedParser, function(
   myPromise.then(
     function(result) {
       var response_object = { results: result };
+      console.log(result)
       response.send(response_object);
     },
     function(err) {
@@ -126,6 +130,7 @@ router.post("/update_individual_installments", urlencodedParser, function(
   myPromise.then(
     function(result) {
       var response_object = { results: result };
+      console.log(result)
       response.send(response_object);
     },
     function(err) {
@@ -157,6 +162,7 @@ router.post("/delete_individual_installments", urlencodedParser, function(
   myPromise.then(
     function(result) {
       var response_object = { results: result };
+      console.log(result)
       response.send(response_object);
     },
     function(err) {
@@ -182,6 +188,7 @@ router.post("/get_number_of_installments_records", urlencodedParser, function(
   myPromise.then(
     function(result) {
       var response_object = { results: result };
+      console.log(result)
       response.send(response_object);
     },
     function(err) {
@@ -213,6 +220,7 @@ router.post("/installments_user_specific_query", urlencodedParser, function(
   myPromise.then(
     function(result) {
       var response_object = { results: result };
+      console.log(result)
       response.send(response_object);
     },
     function(err) {
@@ -235,6 +243,7 @@ router.post("/get_installment_paid_on_certain_date", urlencodedParser, function(
   myPromise.then(
       function(result) {
         var response_object = { results: result };
+        console.log(result)
         response.send(response_object);
       },
       function(err) {
@@ -258,6 +267,7 @@ router.post("/get_installment_between_certain_period", urlencodedParser, functio
   myPromise.then(
       function(result) {
         var response_object = { results: result };
+        console.log(result)
         response.send(response_object);
       },
       function(err) {
@@ -281,6 +291,7 @@ router.post("/get_installment_for_particular_student_between_certain_period", ur
   myPromise.then(
       function(result) {
         var response_object = { results: result };
+        console.log(result)
         response.send(response_object);
       },
       function(err) {

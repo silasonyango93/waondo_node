@@ -35,6 +35,7 @@ router.post("/add_student_registration", urlencodedParser, function(
   myPromise.then(
     function(result) {
       var response_object = { results: result };
+        console.log(result)
       response.send(response_object);
     },
     function(err) {
@@ -53,6 +54,7 @@ router.post("/get_all_student_registration", urlencodedParser, function(
   myPromise.then(
     function(result) {
       var response_object = { results: result };
+        console.log(result)
       response.send(response_object);
     },
     function(err) {
@@ -78,6 +80,7 @@ router.post("/get_specific_student_registration", urlencodedParser, function(
   myPromise.then(
     function(result) {
       var response_object = { results: result };
+        console.log(result)
       response.send(response_object);
     },
     function(err) {
@@ -106,6 +109,7 @@ router.post("/update_student_registration", urlencodedParser, function(
   myPromise.then(
     function(result) {
       var response_object = { results: result };
+        console.log(result)
       response.send(response_object);
     },
     function(err) {
@@ -141,6 +145,7 @@ router.post(
     myPromise.then(
       function(result) {
         var response_object = { results: result };
+          console.log(result)
         response.send(response_object);
       },
       function(err) {
@@ -173,6 +178,7 @@ router.post(
     myPromise.then(
       function(result) {
         var response_object = { results: result };
+          console.log(result)
         response.send(response_object);
       },
       function(err) {
@@ -199,6 +205,7 @@ router.post(
     myPromise.then(
       function(result) {
         var response_object = { results: result };
+          console.log(result)
         response.send(response_object);
       },
       function(err) {
@@ -231,6 +238,7 @@ router.post(
     myPromise.then(
       function(result) {
         var response_object = { results: result };
+          console.log(result)
         response.send(response_object);
       },
       function(err) {

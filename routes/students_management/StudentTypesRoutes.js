@@ -29,6 +29,7 @@ router.post("/add_student_types", urlencodedParser, function(
   myPromise.then(
     function(result) {
       var response_object = { results: result };
+      console.log(result)
       response.send(response_object);
     },
     function(err) {
@@ -47,6 +48,7 @@ router.post("/get_all_student_types", urlencodedParser, function(
   myPromise.then(
     function(result) {
       var response_object = { results: result };
+      console.log(result)
       response.send(response_object);
     },
     function(err) {
@@ -69,6 +71,7 @@ router.post("/get_specific_student_types", urlencodedParser, function(
   myPromise.then(
     function(result) {
       var response_object = { results: result };
+      console.log(result)
       response.send(response_object);
     },
     function(err) {
@@ -91,6 +94,7 @@ router.post("/update_student_types", urlencodedParser, function(
   myPromise.then(
     function(result) {
       var response_object = { results: result };
+      console.log(result)
       response.send(response_object);
     },
     function(err) {
@@ -120,6 +124,7 @@ router.post("/update_individual_student_types", urlencodedParser, function(
   myPromise.then(
     function(result) {
       var response_object = { results: result };
+      console.log(result)
       response.send(response_object);
     },
     function(err) {
@@ -151,6 +156,7 @@ router.post("/delete_individual_student_types", urlencodedParser, function(
   myPromise.then(
     function(result) {
       var response_object = { results: result };
+      console.log(result)
       response.send(response_object);
     },
     function(err) {
@@ -176,6 +182,7 @@ router.post("/get_number_of_student_types_records", urlencodedParser, function(
   myPromise.then(
     function(result) {
       var response_object = { results: result };
+      console.log(result)
       response.send(response_object);
     },
     function(err) {
@@ -207,6 +214,7 @@ router.post("/student_types_user_specific_query", urlencodedParser, function(
   myPromise.then(
     function(result) {
       var response_object = { results: result };
+      console.log(result)
       response.send(response_object);
     },
     function(err) {
